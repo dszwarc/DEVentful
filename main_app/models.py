@@ -1,15 +1,30 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
+
+
+
+CATEGORIES = (
+    ('C', 'Catering'),
+    ('E', 'Entertainment'),
+    ('D', 'Decor'),
+    ('T', 'Transportation'),
+)
+
 
 class Vendor(models.Model):
     vendor_name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
+    category = models.CharField(max_length=1, choices=CATEGORIES, default=CATEGORIES[0][0])
+
+    def __str__(self):
+        return f"{self.vendor_name}"
 
 
 class Event(models.Model):
     event_name = models.CharField(max_length=255)
-    #organizer = models.ForeignKey(User, on_delete=models.CASCADE)
+    organizer = models.ForeignKey(User, on_delete=models.CASCADE)
     event_date = models.DateField()
     start_time = models.TimeField()
     end_time = models.TimeField()

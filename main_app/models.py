@@ -17,6 +17,11 @@ class Vendor(models.Model):
     vendor_name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
     category = models.CharField(max_length=1, choices=CATEGORIES, default=CATEGORIES[0][0])
+    cost = models.IntegerField(max_length=7),
+    poc = models.CharField(max_length=12)
+    email = models.EmailField(),
+    phone = models.IntegerField()
+
 
     def __str__(self):
         return f"{self.vendor_name}"

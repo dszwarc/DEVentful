@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add Bootstrap or Materialize CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <title>About Us</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-5">Revolutionize Your Celebrations</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'images/about.jpg' %}" class="img-fluid" alt="About Us">
+            </div>
+            <div class="col-md-6">
+                <p>Welcome to our party planning app, where we strive to make event organization effortless and enjoyable. Our platform allows you to easily manage all aspects of your event, from selecting vendors to scheduling your special day. Our team is dedicated to providing a seamless experience, ensuring that your event is a memorable success. Join us as we help you create the perfect celebration!</p>
+                <p>Our app offers a wide range of features to make planning your event as simple as possible. From browsing through our curated list of vendors to keeping track of your event timeline, we've got you covered every step of the way.</p>
+            </div>
+        </div>
+       
+        <div class="features my-5">
+            <h2 class="text-center">Explore Our Innovative Tools</h2>
+            <div class="row">
+                
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://i.imgur.com/bBubqir.png" class="card-img-top" alt="Event Type Selection">
+                        <div class="card-body">
+                            <h5 class="card-title">Event Type Selection</h5>
+                            <p class="card-text">Choose the perfect event type for your special occasion, whether it's a birthday, wedding, or any other celebration. Our app tailors the planning process to fit your specific needs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'images/feature2.jpg' %}" class="card-img-top" alt="Vendor Management">
+                        <div class="card-body">
+                            <h5 class="card-title">Vendor Management</h5>
+                            <p class="card-text">Effortlessly add or remove vendors from our curated list, or even add your own preferred vendor. Our app provides the flexibility to customize your event with the perfect team of professionals.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'images/feature3.jpg' %}" class="card-img-top" alt="Budget Overview">
+                        <div class="card-body">
+                            <h5 class="card-title">Budget Overview</h5>
+                            <p class="card-text">Keep track of your expenses with our total budget feature, which consolidates all vendor costs and provides a comprehensive view of your event's overall cost, helping you stay on budget.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        <div class="team my-5">
+            <h2 class="text-center">Meet Our Team</h2>
+            <div class="row">
+                <!-- Add team members as you want -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'images/team1.jpg' %}" class="card-img-top" alt="Team Member 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Emilia Merrow</h5>
+                            <p class="card-text">Emilia is a creative problem solver who thrives in challenging situations. Her innovative ideas and resourcefulness ensure each event stands out and leaves a lasting impression.</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{% static 'images/team2.jpg' %}" class="card-img-top" alt="Team Member 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Venera Sultan</h5>
+                                <p class="card-text">Known for her attention to detail and organizational skills, Venera creates memorable events with ease. Her keen eye for design makes every celebration extraordinary.</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{% static 'images/team3.jpg' %}" class="card-img-top" alt="Team Member 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Dan Szwarc</h5>
+                                <p class="card-text">Dan excels in communication and building strong relationships with clients and vendors alike. His dedication to client satisfaction guarantees a smooth and enjoyable event planning experience.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Bootstrap JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0-alpha1/dist/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+    {% endblock %}
+    

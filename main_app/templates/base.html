@@ -9,6 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>DEVentful</title>
 	<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css' %}">
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
@@ -23,7 +24,19 @@
 				
 				<ul class="left">
 					<li><a href="{% url 'about' %}">About us</a></li>
-				
+	
+</head>
+
+<body style="color: blue; background-image: url('https://i.imgur.com/ty48lKQ.png'); background-position: center; font-family:Inter;">
+	<header class="header-menu" style="color:red;">
+		<nav>
+			<div >
+				<ul>
+					<li><a href="/">&nbsp;&nbsp; DEVentful</a></li>
+				</ul>
+				<ul>
+					<li><a href="{% url 'about' %}">About</a></li>
+				<ul class="right">
 				</ul>
 			</div>
 		</nav>

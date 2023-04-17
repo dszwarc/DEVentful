@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Create Event</h1>
+        <form method="POST" class="row g-3">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <label for="event_name" class="form-label">Event Name</label>
+                <input type="text" class="form-control" id="event_name" name="event_name" required>
+            </div>
+            <div class="col-md-6">
+                <label for="event_type" class="form-label">Type of Event</label>
+                <select class="form-selct" id="event_type" name="event_type" required>
+                    <option value="wedding">Wedding</option>
+                    <option value="birthday">Birthday</option>
+                    <option value="graduation">Graduation</option>
+                    <option value="bridal-shower">Bridal Shower</option>
+                    <option value="baby_shower">Baby Shower</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="event_date" class="form-label">Event Date</label>
+                <input type="date" class="form-control" id="event_date" name="event_date" required>
+            </div>
+            <div class="col-md-4">
+                <label for="start_time" class="form_label">Start Time</label>
+                <input type="time" class="form-control" id="start_time" name="start_time" required>
+            </div>
+            <div class="col-md-4">
+                <label for="end_time" class="form-label">End Time</label>
+                <input type="time" class="form-control" id="end_time" name="end_time" required>
+              </div>
+        
+              <div class="col-md-12">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" name="location" required>
+              </div>
+        
+              <div class="col-md-12">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+              </div>
+        
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Create Event</button>
+              </div>
+            </form>
+          </div>
+        {% endblock %}
+

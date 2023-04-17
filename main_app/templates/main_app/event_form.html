@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="container mt-5">
-        <h1>Create Event</h1>
+        <h1>Event:</h1>
         <form method="POST" class="row g-3">
             {% csrf_token %}
             <div class="col-md-6">
@@ -12,11 +12,11 @@
             <div class="col-md-6">
                 <label for="event_type" class="form-label">Type of Event</label>
                 <select class="form-selct" id="event_type" name="event_type" required>
-                    <option value="Wedding">Wedding</option>
-                    <option value="Birthday">Birthday</option>
-                    <option value="Graduation">Graduation</option>
-                    <option value="Bridal-shower">Bridal Shower</option>
-                    <option value="Baby_shower">Baby Shower</option>
+                    <option value="we">Wedding</option>
+                    <option value="bi">Birthday</option>
+                    <option value="gr">Graduation</option>
+                    <option value="br">Bridal Shower</option>
+                    <option value="ba">Baby Shower</option>
                 </select>
             </div>
             <div class="col-md-4">
@@ -43,7 +43,7 @@
               </div>
         
               <div class="col-md-12">
-                <button type="submit" class="btn btn-primary">Create Event</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>
           </div>
@@ -56,4 +56,3 @@
 
           </script>
         {% endblock %}
-

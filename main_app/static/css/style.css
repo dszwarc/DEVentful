@@ -8,8 +8,6 @@ body {
    
 }
 
-
-    
 main {
     flex: 1 0 auto;
   }
@@ -21,7 +19,7 @@ main {
     text-align: right;  
   }
 
-  
+
 
   
  h1 {
@@ -53,44 +51,44 @@ header img {
   margin-right: 20px;
 }
 
-  nav{
-    height: 80px;
-  }
-  
-  
-  .card-container {
-    height: 300px; 
-    overflow: auto; 
-  }
-  .card-container {
-    height: 300px; /* Set the height of the container */
-    overflow: auto; /* Enable scrolling */
-    animation: scroll 10s linear infinite; /* Apply the animation */
-  }
-  
-  @keyframes scroll {
-    0% {
-      transform: translateY(0); /* Start at the top */
-    }
-    100% {
-      transform: translateY(-100%); /* Scroll to the bottom */
-    }
-  }
+nav{
+height: 150px;
+}
 
-  
-  .card {
-    display: inline-block;
-    width: 45%; /* set the width to your desired value */
-    margin: 10px;
-  }
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .card {
-    width: 45%; /* set the width to your desired value */
-    margin-bottom: 10px;
-  }
+
+.card-container {
+height: 300px; 
+overflow: auto; 
+}
+.card-container {
+height: 300px; /* Set the height of the container */
+overflow: auto; /* Enable scrolling */
+animation: scroll 10s linear infinite; /* Apply the animation */
+}
+
+@keyframes scroll {
+0% {
+    transform: translateY(0); /* Start at the top */
+}
+100% {
+    transform: translateY(-100%); /* Scroll to the bottom */
+}
+}
+
+
+.card {
+display: inline-block;
+width: 45%; /* set the width to your desired value */
+margin: 10px;
+}
+.card-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+
+.card {
+width: 45%; /* set the width to your desired value */
+margin-bottom: 10px;
+}
 

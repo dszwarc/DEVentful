@@ -15,12 +15,14 @@
 
 <body >
 	<header class="header-menu " >
-		<img src="https://i.imgur.com/OomMXBI.png" alt="Logo">
+		<a href="{% url 'home' %}"><img src="https://i.imgur.com/OomMXBI.png" alt="Logo"></a>
 		
 		<nav class="black">
 			<div>
 				<ul class="left">
 					<li><a href="{% url 'about' %}">About us</a></li>
+					<li><a href="{% url 'events_index' %}">All My Events</a></li>
+					<li><a href="{% url 'event_create' %}">Create an Event</a></li>
 				</ul>
 			</div>
 		</nav>

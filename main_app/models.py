@@ -21,7 +21,7 @@ class Vendor(models.Model):
     cost = models.IntegerField(max_length=7),
     poc = models.CharField(max_length=12)
     email = models.EmailField(),
-    phone = models.IntegerField()
+    phone = models.IntegerField(default=0)
 
 
     def __str__(self):

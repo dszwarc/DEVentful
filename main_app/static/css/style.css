@@ -60,24 +60,24 @@ main {
     overflow: auto; 
   }
   .card-container {
-    height: 300px; /* Set the height of the container */
-    overflow: auto; /* Enable scrolling */
-    animation: scroll 10s linear infinite; /* Apply the animation */
+    height: 300px;
+    overflow: auto; 
+    animation: scroll 10s linear infinite;
   }
   
   @keyframes scroll {
     0% {
-      transform: translateY(0); /* Start at the top */
+      transform: translateY(0); 
     }
     100% {
-      transform: translateY(-100%); /* Scroll to the bottom */
+      transform: translateY(-100%); 
     }
   }
 
   
   .card {
     display: inline-block;
-    width: 45%; /* set the width to your desired value */
+    width: 45%; 
     margin: 10px;
   }
   .card-container {
@@ -87,7 +87,7 @@ main {
   }
   
   .card {
-    width: 45%; /* set the width to your desired value */
+    width: 45%;
     margin-bottom: 10px;
   }
 

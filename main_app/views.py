@@ -46,3 +46,8 @@ class VendorDetail(DetailView):
 class VendorDelete(DeleteView):
     model = Vendor
     success_url = '/vendors/'
+
+class VendorUpdate(UpdateView):
+    model = Vendor
+    fields = ['vendor_name', 'description', 
+              'cost', 'poc', 'email', 'phone']

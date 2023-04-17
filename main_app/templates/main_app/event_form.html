@@ -1,58 +1,39 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
-    <div class="container mt-5">
-        <h1>Event:</h1>
-        <form method="POST" class="row g-3">
-            {% csrf_token %}
-            <div class="col-md-6">
-                <label for="event_name" class="form-label">Event Name</label>
-                <input type="text" class="form-control" id="event_name" name="event_name" required>
-            </div>
-            <div class="col-md-6">
-                <label for="event_type" class="form-label">Type of Event</label>
-                <select class="form-selct" id="event_type" name="event_type" required>
-                    <option value="we">Wedding</option>
-                    <option value="bi">Birthday</option>
-                    <option value="gr">Graduation</option>
-                    <option value="br">Bridal Shower</option>
-                    <option value="ba">Baby Shower</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <label for="event_date" class="form-label">Event Date</label>
-                <input type="date" class="form-control" id="event_date" name="event_date" required>
-            </div>
-            <div class="col-md-4">
-                <label for="start_time" class="form_label">Start Time</label>
-                <input type="time" class="form-control" id="start_time" name="start_time" required>
-            </div>
-            <div class="col-md-4">
-                <label for="end_time" class="form-label">End Time</label>
-                <input type="time" class="form-control" id="end_time" name="end_time" required>
-              </div>
-        
-              <div class="col-md-12">
-                <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" id="location" name="location" required>
-              </div>
-        
-              <div class="col-md-12">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
-              </div>
-        
-              <div class="col-md-12">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
-          </div>
 
-          <script>
-            
-            const selectEl = document.getElementById('event_type')
+{% if object %}
+	<h1>Edit <span class="teal-text">{{object.event_name}}</span></h1>
+{% else %}
+	<h1>Add an Event!</h1>
+{% endif %}
 
-            M.FormSelect.init(selectEl)
+<form action="" method="POST">
+	{% csrf_token %}
+	<table>
+		{{ form.as_table}}
+	</table>
+	<button type="submit" class="btn">Submit</button>
+</form>
+	
+<script>
+	const eventdateEl = document.getElementById('id_event_date');
+	M.Datepicker.init(eventdateEl, {
+		format: 'yyyy-mm-dd', 
+		defaultDate: new Date(),
+		setDefaultDate: true,
+		autoClose: true
+	})
 
-          </script>
-        {% endblock %}
+	const selectEl = document.getElementById('id_event_type');
+	M.FormSelect.init(selectEl)
+
+    const eventstart = document.getElementById('id_start_time');
+    const eventend = document.getElementById('id_end_time');
+
+    M.Timepicker.init(eventstart, twelveHour=false)
+    M.Timepicker.init(eventend, twelveHour=false)
+</script>
+
+{% endblock content %}

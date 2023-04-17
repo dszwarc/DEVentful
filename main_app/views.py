@@ -13,7 +13,7 @@ def about(request):
 
 class EventCreate(CreateView):
     model = Event
-    fields = ['event_name', 'event_date', 'start_time',
+    fields = ['event_name', 'event_type', 'event_date', 'start_time',
                'end_time', 'location', 'description']
     
 class EventList(ListView):

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django import forms
 
 # Create your models here.
 
@@ -40,8 +41,8 @@ class Event(models.Model):
     event_name = models.CharField(max_length=255)
     # organizer = models.ForeignKey(User, on_delete=models.CASCADE)
     event_date = models.DateField()
-    start_time = models.TimeField()
-    end_time = models.TimeField()
+    start_time = models.CharField(max_length=10)
+    end_time = models.CharField(max_length=10)
     location = models.CharField(max_length=255)
     description = models.TextField()
     vendors = models.ManyToManyField(Vendor, blank=True)
@@ -54,3 +55,4 @@ class Event(models.Model):
     
     def get_absolute_url(self):
         return reverse('events_index')
+    

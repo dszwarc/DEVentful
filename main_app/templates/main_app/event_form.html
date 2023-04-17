@@ -12,11 +12,11 @@
             <div class="col-md-6">
                 <label for="event_type" class="form-label">Type of Event</label>
                 <select class="form-selct" id="event_type" name="event_type" required>
-                    <option value="wedding">Wedding</option>
-                    <option value="birthday">Birthday</option>
-                    <option value="graduation">Graduation</option>
-                    <option value="bridal-shower">Bridal Shower</option>
-                    <option value="baby_shower">Baby Shower</option>
+                    <option value="Wedding">Wedding</option>
+                    <option value="Birthday">Birthday</option>
+                    <option value="Graduation">Graduation</option>
+                    <option value="Bridal-shower">Bridal Shower</option>
+                    <option value="Baby_shower">Baby Shower</option>
                 </select>
             </div>
             <div class="col-md-4">
@@ -47,5 +47,13 @@
               </div>
             </form>
           </div>
+
+          <script>
+            
+            const selectEl = document.getElementById('event_type')
+
+            M.FormSelect.init(selectEl)
+
+          </script>
         {% endblock %}
 

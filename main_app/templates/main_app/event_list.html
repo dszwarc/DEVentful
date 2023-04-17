@@ -3,8 +3,16 @@
 
 <h1>Events</h1>
 
-
-
-<a href="{% url 'event_create' %}">Add a new Event</a>
+{% for event in event_list %}
+  <a href="{% url 'event_detail' event.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ event.event_name }}</span>
+            <p>Event: {{ event.event_name }}</p>
+        </div>
+    </div>
+  </a>
+{% endfor %}
+    
 
 {% endblock %}

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 
@@ -27,9 +28,17 @@ class Vendor(models.Model):
         return f"{self.vendor_name}"
 
 
+TYPES = (
+    ('we', 'Wedding'),
+    ('bi', 'Birthday'),
+    ('gr', 'Graduation'),
+    ('br','Bridal Shower'),
+    ('ba','Baby Shower'),
+    )
+
 class Event(models.Model):
     event_name = models.CharField(max_length=255)
-    organizer = models.ForeignKey(User, on_delete=models.CASCADE)
+    # organizer = models.ForeignKey(User, on_delete=models.CASCADE)
     event_date = models.DateField()
     start_time = models.TimeField()
     end_time = models.TimeField()
@@ -38,6 +47,10 @@ class Event(models.Model):
     vendors = models.ManyToManyField(Vendor, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    event_type = models.CharField(max_length=2, choices=TYPES, default=TYPES[0][0])
 
     def __str__(self):
         return self.event_name
+    
+    def get_absolute_url(self):
+        return reverse('events_index')

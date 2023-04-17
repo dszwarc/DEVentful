@@ -4,8 +4,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-   background-image: url('');
-   background-position: 0cap;
+  
    
    
 }
@@ -84,6 +83,29 @@ animation: scroll 10s linear infinite;
 
 .card {
   width: 50%;
+}
+
+
+.scroll-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-content {
+  animation: scroll 3s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 

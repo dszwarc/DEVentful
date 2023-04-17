@@ -15,7 +15,7 @@ class EventCreate(CreateView):
     model = Event
     fields = ['event_name', 'event_type', 'event_date', 'start_time',
                'end_time', 'location', 'description']
-    
+
 class EventList(ListView):
     model = Event
 

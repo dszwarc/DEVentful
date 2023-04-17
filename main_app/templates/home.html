@@ -1,7 +1,23 @@
 {% extends 'base.html' %}
 
+{% load static %}
 
 {% block content %}
-	<h1>Welcome to our app</h1>
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="hero-content">
+                        <h1 class="text-uppercase">Welcome to the Future of Party Planning</h1>
+                        <p class="lead">Discover a seamless and enjoyable event organization experience with our innovative app.</p>
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://i.imgur.com/RXJWp6N.jpg" class="img-fluid" alt="Party Planning App">
+
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock content %}
-	

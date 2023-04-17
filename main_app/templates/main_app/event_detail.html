@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Event Details</h1>
+
+<div class="row">
+    <div class="col s6">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ event.event_name }}</span>
+                <p>Date: {{ event.event_date }}</p>
+                <p>Location: {{ event.location }}</p>
+                <p>Type: {{ event.get_event_type_display }}</p>
+                <p>Description: {{ event.description }}</p>
+            </div>
+            <div class="card-action">
+                <a href="{% url 'events_update' event.id %}">Edit</a>
+                <a href="{% url 'events_delete' event.id %}">Delete</a>
+            </div>
+        </div>
+    </div>
+
+
+    <hr>
+    <div class="row">
+        <div class="col s6">
+            <h3>{{ event.event_name }}'s Vendors</h3>
+            {% if event.vendors.count %}
+            {% for vendor in event.vendors.all %}
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">{{ vendor.vendor_name }}</span>
+                    <p>Category: {{ vendor.get_category_display }}</p>
+                    <p>Description: {{ vendor.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h5>No Vendors :(</h5>
+            {% endif %}
+        </div>
+        <!-- Available vendors will come after this line -->
+        <div class="col s6">
+            <h3>Available Vendors</h3>
+            {% if vendors.count %}
+            {% for vendor in vendors.all %}
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">{{ vendor.vendor_name }}</span>
+                    <p>Category: {{ vendor.get_category_display }}</p>
+                    <p>Description: {{ vendor.description }}</p>
+                </div>
+                <div class="card-action">
+                    <form action="{% url 'assoc_vendor' event.id vendor.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">Add</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h5>{{event.event_name}} Already Has All Vendors Available</h5>
+            {% endif %}
+        </div>
+    </div>
+    
+    <script>
+    
+        const dateEl = document.querySelector('#id_event_date');
+        M.Datepicker.init(dateEl, {
+            format: 'yyyy-mm-dd', // this how django formats the date in the model
+            defaultDate: new Date(),
+            setDefaultDate: true,
+            autoClose: true
+        })
+    
+    </script>
+    
+    
+{% endblock %}
+
+
+
+
+    

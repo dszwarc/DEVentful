@@ -26,6 +26,12 @@ class EventDelete(DeleteView):
     model = Event
     success_url = '/events/'
 
+class EventUpdate(UpdateView):
+    model = Event
+    fields = ['event_name', 'event_date', 'start_time', 
+              'end_time', 'location', 'description']
+    success_url = '/events/'
+
 class VendorCreate(CreateView):
     model = Vendor
     fields = ['vendor_name', 'description', 'category', 

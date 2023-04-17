@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Vendors</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Vendor Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Cost</th>
+            <th>Point of Contact</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for vendor in vendor_list %}
+        <tr>
+            <td>{{ vendor.vendor_name }}</td>
+            <td>{{ vendor.description }}</td>
+            <td>{% for value, display_name in vendor.category.field.choices %}
+                    {% if vendor.category == value %}
+                      {{ display_name }}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>{{ vendor.cost }}</td>
+            <td>{{ vendor.poc }}</td>
+            <td>{{ vendor.email }}</td>
+            <td>{{ vendor.phone }}</td>
+            <td>
+                <a href="{% url 'vendor_detail' vendor.id %}">View</a>
+                <a href="{% url 'vendor_update' vendor.id %}">Edit</a>
+                <a href="{% url 'vendor_delete' vendor.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'vendor_create' %}">Add a new vendor</a>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Vendor Details</h1>
+
+<div class="row">
+  <div class="col s6 col-offset-3">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ vendor.vendor_name }}</span>
+        <p>Description: {{ vendor.description }}</p>
+        <p>Category: {% for value, display_name in vendor.category.field.choices %}
+                      {% if vendor.category == value %}
+                        {{ display_name }}
+                      {% endif %}
+                     {% endfor %}
+        </p>
+        <p>Cost: {{ vendor.cost }}</p>
+        <p>Point of Contact: {{ vendor.poc }}</p>
+        <p>Email: {{ vendor.email }}</p>
+        <p>Phone: {{ vendor.phone }}</p>
+      </div>
+      <div class="card-action">
+        <a href="{% url 'vendors_update' vendor.id %}">Edit</a>
+        <a href="{% url 'vendors_delete' vendor.id %}">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

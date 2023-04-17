@@ -5,6 +5,7 @@ body {
     flex-direction: column;
    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
    
+   
 }
 
 
@@ -32,6 +33,7 @@ main {
     display: inline-block;
     animation: typing 3s steps(20) forwards;
     text-shadow: 0 0 transparent;
+    
   }
   
   @keyframes typing {
@@ -52,7 +54,7 @@ header img {
 }
 
   nav{
-    height: 150px;
+    height: 80px;
   }
   
   

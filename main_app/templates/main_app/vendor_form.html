@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Form</title>
+</head>
+<body>
+
+    <h1>Add a Vendor</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <label for="{{ form.vendor_name.id_for_label }}">Vendor Name</label>
+        <input type="text" name="{{ form.vendor_name.html_name }}" id="{{ form.vendor_name.auto_id }}" required>
+        
+        <label for="{{ form.description.id_for_label }}">Description</label>
+        <input type="text" name="{{ form.description.html_name }}" id="{{ form.description.auto_id }}" required>
+        
+        <label for="{{ form.category.id_for_label }}">Category</label>
+        <select name="{{ form.category.html_name }}" id="{{ form.category.auto_id }}" required>
+            {% for value, display_name in form.category.field.choices %}
+            <option value="{{ value }}">{{ display_name }}</option>
+            {% endfor %}
+        </select>
+        
+        <label for="{{ form.cost.id_for_label }}">Cost</label>
+        <input type="number" name="{{ form.cost.html_name }}" id="{{ form.cost.auto_id }}" required>
+        
+        <label for="{{ form.poc.id_for_label }}">Point of Contact</label>
+        <input type="text" name="{{ form.poc.html_name }}" id="{{ form.poc.auto_id }}" required>
+        
+        <label for="{{ form.email.id_for_label }}">Email</label>
+        <input type="email" name="{{ form.email.html_name }}" id="{{ form.email.auto_id }}" required>
+        
+        <label for="{{ form.phone.id_for_label }}">Phone</label>
+        <input type="number" name="{{ form.phone.html_name }}" id="{{ form.phone.auto_id }}" required>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

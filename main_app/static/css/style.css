@@ -7,87 +7,85 @@ body {
    
 }
 
-
-    
 main {
     flex: 1 0 auto;
   }
 
 
 
-  footer.page-footer {
-    padding-top: 0;
-    text-align: right;
-  }
+footer.page-footer {
+padding-top: 0;
+text-align: right;
+}
 
-  
 
-  
- h1 {
-    font-family:"Clarkson",Helvetica,sans-serif;
-   
-    text-align: center;
-    margin: 0;
-    padding: 1rem;
-    display: inline-block;
-    animation: typing 3s steps(20) forwards;
-    text-shadow: 0 0 transparent;
-  }
-  
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-  
-  
-  header img {
-    width: 100px;
-  height: 65px;
-  float: left;
-  margin-right: 20px;}
 
-  nav{
-    height: 150px;
-  }
-  
-  
-  .card-container {
-    height: 300px; 
-    overflow: auto; 
-  }
-  .card-container {
-    height: 300px; /* Set the height of the container */
-    overflow: auto; /* Enable scrolling */
-    animation: scroll 10s linear infinite; /* Apply the animation */
-  }
-  
-  @keyframes scroll {
-    0% {
-      transform: translateY(0); /* Start at the top */
-    }
-    100% {
-      transform: translateY(-100%); /* Scroll to the bottom */
-    }
-  }
 
-  
-  .card {
-    display: inline-block;
-    width: 45%; /* set the width to your desired value */
-    margin: 10px;
-  }
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .card {
-    width: 45%; /* set the width to your desired value */
-    margin-bottom: 10px;
-  }
+h1 {
+font-family:"Clarkson",Helvetica,sans-serif;
+
+text-align: center;
+margin: 0;
+padding: 1rem;
+display: inline-block;
+animation: typing 3s steps(20) forwards;
+text-shadow: 0 0 transparent;
+}
+
+@keyframes typing {
+from {
+    width: 0;
+}
+to {
+    width: 100%;
+}
+}
+
+
+header img {
+width: 100px;
+height: 65px;
+float: left;
+margin-right: 20px;}
+
+nav{
+height: 150px;
+}
+
+
+.card-container {
+height: 300px; 
+overflow: auto; 
+}
+.card-container {
+height: 300px; /* Set the height of the container */
+overflow: auto; /* Enable scrolling */
+animation: scroll 10s linear infinite; /* Apply the animation */
+}
+
+@keyframes scroll {
+0% {
+    transform: translateY(0); /* Start at the top */
+}
+100% {
+    transform: translateY(-100%); /* Scroll to the bottom */
+}
+}
+
+
+.card {
+display: inline-block;
+width: 45%; /* set the width to your desired value */
+margin: 10px;
+}
+.card-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+
+.card {
+width: 45%; /* set the width to your desired value */
+margin-bottom: 10px;
+}
 

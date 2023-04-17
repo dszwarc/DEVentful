@@ -17,7 +17,7 @@ main {
 
   footer.page-footer {
     padding-top: 0;
-    text-align: right;
+    text-align: right;  
   }
 
   
@@ -44,11 +44,12 @@ main {
   }
   
   
-  header img {
+header img {
     width: 100px;
   height: 65px;
   float: left;
-  margin-right: 20px;}
+  margin-right: 20px;
+}
 
   nav{
     height: 150px;
@@ -60,24 +61,24 @@ main {
     overflow: auto; 
   }
   .card-container {
-    height: 300px;
-    overflow: auto; 
-    animation: scroll 10s linear infinite;
+    height: 300px; /* Set the height of the container */
+    overflow: auto; /* Enable scrolling */
+    animation: scroll 10s linear infinite; /* Apply the animation */
   }
   
   @keyframes scroll {
     0% {
-      transform: translateY(0); 
+      transform: translateY(0); /* Start at the top */
     }
     100% {
-      transform: translateY(-100%); 
+      transform: translateY(-100%); /* Scroll to the bottom */
     }
   }
 
   
   .card {
     display: inline-block;
-    width: 45%; 
+    width: 45%; /* set the width to your desired value */
     margin: 10px;
   }
   .card-container {
@@ -87,7 +88,7 @@ main {
   }
   
   .card {
-    width: 45%;
+    width: 45%; /* set the width to your desired value */
     margin-bottom: 10px;
   }
 

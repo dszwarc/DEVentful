@@ -77,7 +77,8 @@ def vendor_detail(request, pk):
     vendor_id = pk
     vendor = Vendor.objects.get(id=vendor_id)
     events_vendor_doesnt_have = Event.objects.exclude(id__in=vendor.events.all().values_list('id')).filter(user=request.user)
-    return render(request, 'main_app/event_detail.html', {'vendor': vendor, 'events':events_vendor_doesnt_have})
+    print(events_vendor_doesnt_have)
+    return render(request, 'main_app/vendor_detail.html', {'vendor': vendor, 'events':events_vendor_doesnt_have})
 
 class VendorDelete(LoginRequiredMixin, DeleteView):
     model = Vendor

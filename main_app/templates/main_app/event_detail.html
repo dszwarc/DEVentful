@@ -24,41 +24,19 @@
     <div class="row">
         <div class="col s6">
             <h3>{{ event.event_name }}'s Vendors</h3>
-            {% if event.vendors.count %}
-            {% for vendor in event.vendors.all %}
-            <div class="card">
+            {% if event.vendor_set.all.count %}
+            {% for vendor in event.vendor_set.all %}
+            <a href="{% url 'vendor_detail' vendor.id %}"><div class="card">
                 <div class="card-content">
                     <span class="card-title">{{ vendor.vendor_name }}</span>
                     <p>Category: {{ vendor.get_category_display }}</p>
                     <p>Description: {{ vendor.description }}</p>
                 </div>
+            </a>
             </div>
             {% endfor %}
             {% else %}
             <h5>No Vendors :(</h5>
-            {% endif %}
-        </div>
-        <!-- Available vendors will come after this line -->
-        <div class="col s6">
-            <h3>Available Vendors</h3>
-            {% if vendors.count %}
-            {% for vendor in vendors.all %}
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title">{{ vendor.vendor_name }}</span>
-                    <p>Category: {{ vendor.get_category_display }}</p>
-                    <p>Description: {{ vendor.description }}</p>
-                </div>
-                <div class="card-action">
-                    <form action="{% url 'assoc_vendor' event.id vendor.id %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="btn">Add</button>
-                    </form>
-                </div>
-            </div>
-            {% endfor %}
-            {% else %}
-            <h5>{{event.event_name}} Already Has All Vendors Available</h5>
             {% endif %}
         </div>
     </div>

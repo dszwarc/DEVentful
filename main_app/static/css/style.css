@@ -23,7 +23,7 @@ main {
 
 
   
- h1 {
+ h1{
     font-family:"Clarkson",Helvetica,sans-serif;
    
     text-align: center;
@@ -107,5 +107,6 @@ animation: scroll 10s linear infinite;
     transform: translateY(0);
   }
 }
+
 
 

@@ -31,7 +31,8 @@
 <div>
   <form action="{% url 'assoc_vendor' vendor.id %}" method="POST">
     {% csrf_token %}
-    <select name="event_id" id="">
+    <label for="event_id">Events:</label>
+    <select name="event_id" id="vendor_assoc">
       {% if events.count %}
         {% for event in events %}
         <option value="{{event.id}}">{{event.event_name}}</option>
@@ -41,5 +42,10 @@
     <button type="submit" class="btn">Add Vendor to Event</button>
   </form>
 </div>
+
+<script>
+  const selectEl = document.getElementById('vendor_assoc')
+  M.FormSelect.init(selectEl)
+</script>
 
 {% endblock %}

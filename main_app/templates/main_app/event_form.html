@@ -4,9 +4,12 @@
 {% block content %}
 
 {% if object %}
-	<h1>Edit <span class="teal-text">{{object.event_name}}</span></h1>
+	<h2>Edit <span class="teal-text">{{object.event_name}}</span></h2>
 {% else %}
-	<h1>Add an Event!</h1>
+	<h3 style="text-align: center;  float: left; width: 60%; background-color: black; color: antiquewhite; 
+ position: absolute;
+  top: 30%;
+  ">Add an Event</h3>
 {% endif %}
 
 <form action="" method="POST">

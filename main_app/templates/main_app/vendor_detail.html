@@ -28,8 +28,18 @@
   </div>
 </div>
 
+<div>
+  <form action="{% url 'assoc_vendor' vendor.id %}" method="POST">
+    {% csrf_token %}
+    <select name="event_id" id="">
+      {% if events.count %}
+        {% for event in events %}
+        <option value="{{event.id}}">{{event.event_name}}</option>
+        {% endfor %}
+      {% endif %}
+    </select>
+    <button type="submit" class="btn">Add Vendor to Event</button>
+  </form>
+</div>
 
-{% for event in events %}
-  <p>{{ event.event_name }}</p>
-{% endfor %}
 {% endblock %}

@@ -42,6 +42,13 @@ class VendorList(ListView):
 
 class VendorDetail(DetailView):
     model = Vendor
+    #extra_context = {'events': Event.objects.filter({'vendors': pk})}
+
+# def vendor_detail(request, pk):
+#     vendor_id = pk
+#     vendor = Vendor.objects.get(id=vendor_id)
+#     vendor_nonevents = Event.objects.exclude(id__in=vendor.events.all)
+
 
 class VendorDelete(DeleteView):
     model = Vendor
@@ -51,3 +58,6 @@ class VendorUpdate(UpdateView):
     model = Vendor
     fields = ['vendor_name', 'description', 
               'cost', 'poc', 'email', 'phone']
+    
+# def assoc_vendor(request):
+#     pass

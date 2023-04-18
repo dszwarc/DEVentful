@@ -21,10 +21,16 @@
         <p>Phone: {{ vendor.phone }}</p>
       </div>
       <div class="card-action">
-        <a href="{% url 'vendors_update' vendor.id %}">Edit</a>
-        <a href="{% url 'vendors_delete' vendor.id %}">Delete</a>
+        <a href="{% url 'vendor_update' vendor.id %}">Edit</a>
+        <a href="{% url 'vendor_delete' vendor.id %}">Delete</a>
       </div>
     </div>
   </div>
 </div>
+
+
+{% for event in events %}
+  <p>{{ event.event_name }}</p>
+{% endfor %}
+  <p>{{test}}</p>
 {% endblock %}

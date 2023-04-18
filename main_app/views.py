@@ -13,9 +13,9 @@ def about(request):
 
 class EventCreate(CreateView):
     model = Event
-    fields = ['event_name', 'event_date', 'start_time',
+    fields = ['event_name', 'event_type', 'event_date', 'start_time',
                'end_time', 'location', 'description']
-    
+
 class EventList(ListView):
     model = Event
 
@@ -46,3 +46,8 @@ class VendorDetail(DetailView):
 class VendorDelete(DeleteView):
     model = Vendor
     success_url = '/vendors/'
+
+class VendorUpdate(UpdateView):
+    model = Vendor
+    fields = ['vendor_name', 'description', 
+              'cost', 'poc', 'email', 'phone']

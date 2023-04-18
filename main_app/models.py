@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django import forms
 
 # Create your models here.
 
@@ -13,14 +14,13 @@ CATEGORIES = (
     ('T', 'Transportation'),
 )
 
-
 class Vendor(models.Model):
     vendor_name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
     category = models.CharField(max_length=1, choices=CATEGORIES, default=CATEGORIES[0][0])
-    cost = models.IntegerField(max_length=7),
+    cost = models.IntegerField(default=0)
     poc = models.CharField(max_length=12)
-    email = models.EmailField(),
+    email = models.EmailField(max_length=254)
     phone = models.IntegerField(default=0)
 
 
@@ -40,8 +40,8 @@ class Event(models.Model):
     event_name = models.CharField(max_length=255)
     # organizer = models.ForeignKey(User, on_delete=models.CASCADE)
     event_date = models.DateField()
-    start_time = models.TimeField()
-    end_time = models.TimeField()
+    start_time = models.CharField(max_length=10)
+    end_time = models.CharField(max_length=10)
     location = models.CharField(max_length=255)
     description = models.TextField()
     vendors = models.ManyToManyField(Vendor, blank=True)
@@ -54,3 +54,4 @@ class Event(models.Model):
     
     def get_absolute_url(self):
         return reverse('events_index')
+    

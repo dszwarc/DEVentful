@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User #importing the user model
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django import forms
@@ -44,6 +45,9 @@ class Event(models.Model):
     end_time = models.CharField(max_length=10)
     location = models.CharField(max_length=255)
     description = models.TextField()
+    # a user has many events, event belongs to a User
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
     vendors = models.ManyToManyField(Vendor, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

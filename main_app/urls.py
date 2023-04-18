@@ -14,4 +14,6 @@ urlpatterns = [
     path('vendors/create/', views.VendorCreate.as_view(), name='vendor_create'),
     path('vendors/<int:pk>/update/', views.VendorUpdate.as_view(), name='vendor_update'),
     path('vendors/<int:pk>/delete/', views.VendorDelete.as_view(), name='vendor_delete'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
+

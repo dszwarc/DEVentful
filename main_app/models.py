@@ -14,14 +14,13 @@ CATEGORIES = (
     ('T', 'Transportation'),
 )
 
-
 class Vendor(models.Model):
     vendor_name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
     category = models.CharField(max_length=1, choices=CATEGORIES, default=CATEGORIES[0][0])
-    cost = models.IntegerField(max_length=7),
+    cost = models.IntegerField(default=0)
     poc = models.CharField(max_length=12)
-    email = models.EmailField(),
+    email = models.EmailField(max_length=254)
     phone = models.IntegerField(default=0)
 
 

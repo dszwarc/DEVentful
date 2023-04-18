@@ -28,6 +28,9 @@ class Vendor(models.Model):
     def __str__(self):
         return f"{self.vendor_name}"
 
+    def get_absolute_url(self):
+        return reverse('vendors_index')
+
 
 TYPES = (
     ('we', 'Wedding'),

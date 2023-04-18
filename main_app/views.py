@@ -49,6 +49,7 @@ def event_index(request):
 
 class EventDetail(LoginRequiredMixin, DetailView):
     model = Event
+    
 
 class EventDelete(LoginRequiredMixin, DeleteView):
     model = Event

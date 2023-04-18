@@ -18,7 +18,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)  # Corrected function call
-            return redirect('index')
+            return redirect('events_index')
         else:
             error_message = 'Invalid sign up - try again'
 
@@ -46,8 +46,7 @@ class EventList(LoginRequiredMixin, ListView):
 @login_required
 def event_index(request):
     events = Event.objects.filter(user=request.user)  # Corrected queryset
-    return render(request, 'events/index.html', {'events': events})
-
+    return render(request, 'main_app/event_list.html/', {'event_list': events})
 
 class EventDetail(LoginRequiredMixin, DetailView):
     model = Event
@@ -72,13 +71,13 @@ class VendorList(ListView):
 
 class VendorDetail(DetailView):
     model = Vendor
-    #extra_context = {'events': Event.objects.filter({'vendors': pk})}
+    #extra_context = {'events': Event.objects.all()}
 
-# def vendor_detail(request, pk):
-#     vendor_id = pk
-#     vendor = Vendor.objects.get(id=vendor_id)
-#     vendor_nonevents = Event.objects.exclude(id__in=vendor.events.all)
-
+def vendor_detail(request, pk):
+    vendor_id = pk
+    vendor = Vendor.objects.get(id=vendor_id)
+    events_vendor_doesnt_have = Event.objects.exclude(id__in=vendor.events.all().values_list('id')).filter(user=request.user)
+    return render(request, 'main_app/event_detail.html', {'vendor': vendor, 'events':events_vendor_doesnt_have})
 
 class VendorDelete(LoginRequiredMixin, DeleteView):
     model = Vendor
@@ -88,6 +87,6 @@ class VendorUpdate(LoginRequiredMixin, UpdateView):
     model = Vendor
     fields = ['vendor_name', 'description', 
               'cost', 'poc', 'email', 'phone']
-    
+
 # def assoc_vendor(request):
 #     pass

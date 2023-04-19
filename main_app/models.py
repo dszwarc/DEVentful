@@ -29,7 +29,6 @@ class Event(models.Model):
     end_time = models.CharField(max_length=10)
     location = models.CharField(max_length=255)
     description = models.TextField()
-    
     # a user has many events, event belongs to a User
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     

@@ -11,7 +11,7 @@
     <form method="post">
         {% csrf_token %}
         
-        <label for="{{ form.vendor_name.id_for_label }}">Vendor Name</label>
+        <label for="{{ form.vendor_name.id_for_label }}">Vendor Name </label>
         <input type="text" name="{{ form.vendor_name.html_name }}" id="{{ form.vendor_name.auto_id }}" required>
         
         <label for="{{ form.description.id_for_label }}">Description</label>

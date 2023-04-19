@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2>Vendors</h2>
-
-<table>
-    <thead>
+<h2 style="text-align: center; margin-top:50px;">Vendors</h2>
+<div class="container" style="text-align: center; margin-top: 50px; ">
+<table  class="table table-bordered table-striped" style="border: 1px solid black;">
+    <thead style="padding: 10px;">
         <tr>
             <th>Vendor Name</th>
             <th>Description</th>
@@ -32,15 +32,18 @@
             <td>{{ vendor.email }}</td>
             <td>{{ vendor.phone }}</td>
             <td>
-                <a href="{% url 'vendor_detail' vendor.id %}">View</a>
-                <a href="{% url 'vendor_update' vendor.id %}">Edit</a>
-                <a href="{% url 'vendor_delete' vendor.id %}">Delete</a>
+            
+                <a  class="btn btn-primary btn-sm" href="{% url 'vendor_detail' vendor.id %}">View</a>
+                <a  class="btn btn-secondary btn-sm" href="{% url 'vendor_update' vendor.id %}">Edit</a>
+                <a  class="btn btn-danger btn-sm" href="{% url 'vendor_delete' vendor.id %}">Delete</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
+<div class="d-flex justify-content-center">
 <a href="{% url 'vendor_create' %}">Add a new vendor</a>
+</div>
+</div>
 
 {% endblock %}

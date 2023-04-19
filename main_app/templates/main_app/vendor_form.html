@@ -2,11 +2,11 @@
 
 
 {% block content %}
-
+<div class="container">
 {% if object %}
 	<h2>Edit <span class="teal-text">{{object.vendor_name}}</span></h2>
 {% else %}
-	<h2>Add a Vendor!</h2>
+	<h2>Add a Vendor</h2>
 {% endif %}
 
 <form action="" method="POST">
@@ -14,9 +14,9 @@
 	<table>
 		{{ form.as_table}}
 	</table>
-	<button type="submit" class="btn">Submit</button>
+	<button type="submit" class="waves-effect waves-light btn">Submit</button>
 </form>
-	
+</div>
 <script>
 	const eventdateEl = document.getElementById('id_event_date');
 	M.Datepicker.init(eventdateEl, {

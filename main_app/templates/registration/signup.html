@@ -2,20 +2,27 @@
 
 
 {% block content %}
-<h1>Sign Up</h1>
+<div class="container" style="display: flex; flex-direction: column; align-items: center;
+justify-content: center;
+height: 100vh;">
+<h2 style="font-size: 3rem;
+margin-bottom: 2rem;">Sign Up</h2>
 	
 
 {% if error_message %}
-	<p class="red-text">{{error_message}}</p>
+	<p class="red-text" style=" color: red;
+    margin-top: 1rem;">{{error_message}}</p>
 {% endif %}
 	
 
 
-<form action="{% url 'signup' %}" method="POST">
+<form action="{% url 'signup' %}" method="POST" >
+
 	{% csrf_token %}
 	{{form.as_p}}
-	<input type="submit" class="btn" value="signup">
+	<input type="submit" class="btn" value="signup" style="margin-top: 1rem; padding: 0.5rem 1rem; border-radius: 16px; border: none;
+    background-color: slategray; color: white; font-size: 1.2rem;cursor: pointer; width: 200px; height: 50px; text-align: center; align-self: center; margin: auto; justify-content: center;">
 </form>
-
+</div>
 {% endblock content %}
 	

@@ -2,16 +2,20 @@
 
 
 {% block content %}
-<h1>Log In</h1>
+<div class="login-form" style="max-width: 500px; margin: 0 auto; padding: 50px;background-color: #f1f1f1; border-radius: 5px; box-shadow: 0px 2px 4px rgba(0,0,0,0.3); text-align: center;margin-bottom: 20px;">
+<h2 style="font-size: 40px;">Log In</h2>
 	
 
 <form action="{% url 'login' %}" method="POST">
 	{% csrf_token %}
 	{{form.as_p}}
-	<input type="submit" class="btn" value="login">
-	<input type="hidden" name="next" value="{{next}}">
+	<input type="submit" class="btn" value="login" style="display: block; width: 100%; height: 50px;padding: 10px;
+	border-radius: 15px; border: none; background-color:slategray; color: antiquewhite ; cursor: pointer;">
+	
+  <input type="hidden" name="next" value="{{next}}" style="color:black; ">
 
 </form>
+</div>
 
 {% endblock content %}
 	

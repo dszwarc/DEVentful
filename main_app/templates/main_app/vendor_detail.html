@@ -59,9 +59,48 @@
   </form>
 </div>
 
+<div class="row">
+  <div class="col s6">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Experience</th>
+          <th>Content</th>
+          <th>Rating</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for review in vendor.review_set.all %}
+          <tr>
+            <td>{{ review.title }}</td>
+            <td>{{ review.get_experience_display }}</td>
+            <td>{{ review.content}}</td>
+            <td>{{ review.rating }}</td>
+            <td><a href="{% url 'review_delete' vendor.id review.id %}">Delete</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div>
+  <h3>Add a new review</h3>
+  <form action="{% url 'add_review' vendor.id %}" method="POST">
+    {% csrf_token %}
+    {{ review_form.as_p }}
+    <button type="submit" class="btn">Submit Review</button>
+  </form>
+</div>
+
+
 <script>
   const selectEl = document.getElementById('vendor_assoc')
   M.FormSelect.init(selectEl)
+  const reviewEl = document.getElementById('id_experience')
+  M.FormSelect.init(reviewEl)
 </script>
 
 {% endblock %}

@@ -1,10 +1,16 @@
-from django import forms
+from django.forms import ModelForm
+from .models import Review
 
-from .models import Activity
-
-class EventActivityForm(forms.ModelForm):
+class ReviewForm(ModelForm):
     class Meta:
-        model = Activity
-        fields = ['name', 'start_time', 'duration']
+        model = Review
+        fields = ['title', 'content', 'rating', 'experience']
+        success_url='/vendors'
+
+
+
+
+
+
 
 

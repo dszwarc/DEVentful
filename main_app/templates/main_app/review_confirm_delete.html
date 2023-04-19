@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Delete Review</h2>
+
+  <h4>Are you sure you want to delete?</h4>
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes - Delete!">
+    <a href="{% url 'vendor_detail' object.vendor_id %}">Cancel</a>
+  </form>
+{% endblock %}
+

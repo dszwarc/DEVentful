@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h2 style="text-align: center; margin-top:50px;">Vendors</h2>
-<div class="container" style="text-align: center; margin-top: 50px; ">
+<div class="container" style="background-image: url('https://i.imgur.com/qgdc7Jq.jpg'); background-size: cover; background-position: cover; height: 100vh; width: 2000px;">
+<h2 style="text-align: center; margin-top:30px; justify-content: center; float: center;">Vendors</h2>
+<div class="d-flex justify-content-center " style="margin-top: 90px; float: left;">
 <table  class="table table-bordered table-striped" style="border: 1px solid black;">
     <thead style="padding: 10px;">
         <tr>
-            <th>Vendor Name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Cost</th>
-            <th>Point of Contact</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Actions</th>
+            <th style="padding: 20px;">Vendor Name</th>
+            <th style="padding: 20px;">Description</th>
+            <th style="padding: 20px;">Category</th>
+            <th style="padding: 20px;">Cost</th>
+            <th style="padding: 20px;">Point of Contact</th>
+            <th style="padding: 20px;">Email</th>
+            <th style="padding: 20px;">Phone</th>
+            <th style="padding: 20px;">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -33,16 +33,16 @@
             <td>{{ vendor.phone }}</td>
             <td>
             
-                <a  class="btn btn-primary btn-sm" href="{% url 'vendor_detail' vendor.id %}">View</a>
-                <a  class="btn btn-secondary btn-sm" href="{% url 'vendor_update' vendor.id %}">Edit</a>
-                <a  class="btn btn-danger btn-sm" href="{% url 'vendor_delete' vendor.id %}">Delete</a>
+                <a  class="btn btn-primary btn-sm" href="{% url 'vendor_detail' vendor.id %}" style="background-color: white; color: black;">View</a>
+                <a  class="btn btn-secondary btn-sm" href="{% url 'vendor_update' vendor.id %}" style="background-color: white; color: black;">Edit</a>
+                <a  class="btn btn-danger btn-sm" href="{% url 'vendor_delete' vendor.id %}" style="background-color: white; color: black;">Delete</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-<div class="d-flex justify-content-center">
-<a href="{% url 'vendor_create' %}">Add a new vendor</a>
+<div style="display: flex; justify-content: center;" >
+<a href="{% url 'vendor_create' %}" class="btn" style="color: #ffffff; background-color: #708090; border-radius: 4px; font-size: 14px; width: 400px;  ">Add a new vendor</a>
 </div>
 </div>
 

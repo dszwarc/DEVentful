@@ -59,7 +59,7 @@ def add_photo(request, vendor_id):
     return redirect('vendor_detail', pk=vendor_id)
 
 def delete_photo(request, vendor_id, photo_id):
-    Photo.objects.get(photo_id).delete
+    Photo.objects.get(id=photo_id).delete()
     return redirect('vendor_detail', pk=vendor_id)
 
                           

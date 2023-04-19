@@ -63,7 +63,7 @@ def add_photo(request, vendor_id):
 class EventCreate(LoginRequiredMixin, CreateView):
     model = Event
     fields = ['event_name', 'event_type', 'event_date', 'start_time',
-              'end_time', 'location', 'description']
+              'end_time', 'location', 'description', 'budget']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -83,10 +83,15 @@ def event_index(request):
 class EventDetail(LoginRequiredMixin, DetailView):
     model = Event
     
-# def event_detail(request, pk):
-#     event_id = pk
-#     event = Vendor.objects.get(id=event_id)
-#     return render(request, 'main_app/vendor_detail.html', {'event': event})
+def event_detail(request, pk):
+    event_id = pk
+    event = Event.objects.get(id=event_id)
+    q_location = '+'.join(event.location.split())
+    vendors = event.vendor_set.all()
+    cost = 0
+    for vendor in vendors:
+        cost += vendor.cost
+    return render(request, 'main_app/event_detail.html', {'event': event, 'query':q_location, 'total_cost':cost})
 
 class EventDelete(LoginRequiredMixin, DeleteView):
     model = Event
@@ -96,7 +101,7 @@ class EventDelete(LoginRequiredMixin, DeleteView):
 class EventUpdate(LoginRequiredMixin, UpdateView):
     model = Event
     fields = ['event_name', 'event_date', 'start_time',
-              'end_time', 'location', 'description']
+              'end_time', 'location', 'description', 'budget']
     success_url = '/events/'
 
 

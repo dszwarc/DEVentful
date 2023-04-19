@@ -32,7 +32,7 @@ class Event(models.Model):
     description = models.TextField()
     # a user has many events, event belongs to a User
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    
+    budget = models.IntegerField(default=0)
     #vendors = models.ManyToManyField(Vendor, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -48,10 +48,10 @@ class Vendor(models.Model):
     vendor_name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
     category = models.CharField(max_length=1, choices=CATEGORIES, default=CATEGORIES[0][0])
-    cost = models.IntegerField(default=0)
+    cost = models.IntegerField(default=0.00)
     poc = models.CharField(max_length=12)
     email = models.EmailField(max_length=254)
-    phone = models.IntegerField(default=0)
+    phone = models.IntegerField(default=1234567890)
     events = models.ManyToManyField(Event, blank=True)
 
     def __str__(self):

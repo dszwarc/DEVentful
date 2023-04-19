@@ -17,5 +17,6 @@ urlpatterns = [
     path('vendors/<int:pk>/delete/', views.VendorDelete.as_view(), name='vendor_delete'),
     path('vendors/<int:vendor_id>/assoc', views.assoc_vendor, name='assoc_vendor'),
     path('accounts/signup/', views.signup, name='signup'),
+    path('vendors/<int:vendor_id>/add_photo/', views.add_photo, name='add_photo'),
 ]
 

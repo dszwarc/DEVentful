@@ -14,6 +14,17 @@ CATEGORIES = (
     ('T', 'Transportation'),
 )
 
+
+class Photo(models.Model):
+	# url of the image on aws
+    url = models.CharField(max_length=200)
+    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for vendor_id: {self.vendor_id} @{self.url}"
+
+
+
 TYPES = (
     ('we', 'Wedding'),
     ('bi', 'Birthday'),

@@ -83,6 +83,10 @@ def event_index(request):
 class EventDetail(LoginRequiredMixin, DetailView):
     model = Event
     
+def event_detail(request, pk):
+    event_id = pk
+    event = Vendor.objects.get(id=event_id)
+    return render(request, 'main_app/vendor_detail.html', {'event': event})
 
 
 class EventDelete(LoginRequiredMixin, DeleteView):

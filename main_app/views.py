@@ -58,8 +58,11 @@ def add_photo(request, vendor_id):
             print(e, "error from aws!")
 
     return redirect('vendor_detail', pk=vendor_id)
-                          
-                          
+
+def delete_photo(request, vendor_id, photo_id):
+    Photo.objects.get(id=photo_id).delete()
+    return redirect('vendor_detail', pk=vendor_id)
+
                           
 class EventCreate(LoginRequiredMixin, CreateView):
     model = Event

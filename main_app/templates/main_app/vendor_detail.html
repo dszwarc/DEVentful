@@ -3,30 +3,34 @@
 
 <h2>Vendor Details</h2>
 
-<div class="row">
-  <div class="col s6 col-offset-3">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">{{ vendor.vendor_name }}</span>
-        <p>Description: {{ vendor.description }}</p>
-        <p>Category: {% for value, display_name in vendor.category.field.choices %}
-                      {% if vendor.category == value %}
-                        {{ display_name }}
-                      {% endif %}
-                     {% endfor %}
-        </p>
-        <p>Cost: {{ vendor.cost }}</p>
-        <p>Point of Contact: {{ vendor.poc }}</p>
-        <p>Email: {{ vendor.email }}</p>
-        <p>Phone: {{ vendor.phone }}</p>
-      </div>
-      <div class="card-action">
-        <a href="{% url 'vendor_update' vendor.id %}">Edit</a>
-        <a href="{% url 'vendor_delete' vendor.id %}">Delete</a>
-      </div>
+<div class="container">
+  <div class="row center-align">
+    <div class="col s12 m6 offset-m3">
+      <div class="card">
+        <div class="card-content black-text">
+          <span class="card-title">{{ vendor.vendor_name }}</span>
+          <p>Description: {{ vendor.description }}</p>
+          <p>Category: {% for value, display_name in vendor.category.field.choices %}
+                        {% if vendor.category == value %}
+                          {{ display_name }}
+                        {% endif %}
+                      {% endfor %}
+          </p>
+          <p>Cost: {{ vendor.cost }}</p>
+          <p>Point of Contact: {{ vendor.poc }}</p>
+          <p>Email: {{ vendor.email }}</p>
+          <p>Phone: {{ vendor.phone }}</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'vendor_update' vendor.id %}">Edit</a>
+          <a href="{% url 'vendor_delete' vendor.id %}">Delete</a>
+        </div>
     </div>
     {% for photo in vendor.photo_set.all %}
 		<img class="responsive-img card-panel" src="{{photo.url}}">
+    <form action="{% url 'delete_photo' vendor.id photo.id %}">
+      <input type="submit" class="btn" value="x">
+    </form>
 		{% empty %}
 		<div class="card-panel teal-text center-align">No Photos Uploaded</div>
 		{% endfor %}

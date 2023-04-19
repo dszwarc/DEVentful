@@ -22,5 +22,5 @@ urlpatterns = [
     path('vendors/<int:vendor_id>/add_review/',
          views.add_review, name='add_review'),
     path('vendors/<int:vendor_id>/delete/<int:pk>', views.ReviewDelete.as_view(), name='review_delete'),
+    path('vendors/<int:vendor_id>/delete_photo/<int:photo_id>/', views.delete_photo, name='delete_photo'),
 ]
-

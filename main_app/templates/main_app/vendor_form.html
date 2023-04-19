@@ -2,19 +2,21 @@
 
 
 {% block content %}
-<div class="container">
+<div class="container" style="margin: auto; width: 80%; padding: 20px; background-color: slategray; border-radius: 5px; color: black;">
 {% if object %}
-	<h2>Edit <span class="teal-text">{{object.vendor_name}}</span></h2>
+	<h2>Edit <span class="teal-text" style="color: black;">{{object.vendor_name}}</span></h2>
 {% else %}
-	<h2>Add a Vendor</h2>
+	<h2  style="text-align: center;   width: 40%; background-color: black; color: antiquewhite; border-radius: 20%; 
+	align-self:baseline; top: 30%; position:fixed; margin-top: -130px;;
+	  " class="center-align">Add a Vendor</h2>
 {% endif %}
 
 <form action="" method="POST">
 	{% csrf_token %}
-	<table>
+	<table style="width:100%; margin-bottom: 60px; color: white;">
 		{{ form.as_table}}
 	</table>
-	<button type="submit" class="waves-effect waves-light btn">Submit</button>
+	<button type="submit" class="waves-effect waves-light btn" style="display: block; margin: auto; background-color: aliceblue; color:black; border: none;width: 180px; height: 50px;">Submit</button>
 </form>
 </div>
 <script>

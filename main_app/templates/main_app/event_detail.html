@@ -1,11 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<div class="row">
+    
+    <div class="col s6">
 <h2>Event Details</h2>
 
+<div class="card" style="width: 100%;">
+    <div class="card-content" style="width: 200px; height: 510px;">
+        <span class="card-title">{{ event.event_name }}</span>
+        <p>Date: {{ event.event_date }}</p>
+        <p>Location: {{ event.location }}</p>
+        <p>Type: {{ event.get_event_type_display }}</p>
+        <p>Description: {{ event.description }}</p>
+    </div>
+    <div class="card-action">
+        <a class="waves-effect waves-light btn black" href="{% url 'event_update' event.id %}">Edit</a>
+        <a  class=" waves-effect waves-light btn black" href="{% url 'event_delete' event.id %}">Delete</a>
+    
+    </div>
+</div>
+</div>
+
+
+
+
+    <div class="col s14 m6">
 <iframe
   width="600"
-  height="450"
+  height="700px"
   style="border:0"
   loading="lazy"
   allowfullscreen
@@ -13,27 +35,15 @@
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDaYfi9oyToekXnn6qxxwh23YJKToCqB5Q
     &q=yardley+pa">
 </iframe>
+</div>
 
-<div class="row">
-    <div class="col s6">
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title">{{ event.event_name }}</span>
-                <p>Date: {{ event.event_date }}</p>
-                <p>Location: {{ event.location }}</p>
-                <p>Type: {{ event.get_event_type_display }}</p>
-                <p>Description: {{ event.description }}</p>
-            </div>
-            <div class="card-action">
-                <a href="{% url 'event_update' event.id %}">Edit</a>
-                <a href="{% url 'event_delete' event.id %}">Delete</a>
-            </div>
-        </div>
-    </div>
+</div>
+        
+    
 
-    <hr>
-    <div class="row">
-        <div class="col s6">
+    
+    
+        <div class="" style="align-self:last baseline; float: center;">
             <h3>{{ event.event_name }}'s Vendors</h3>
             {% if event.vendor_set.all.count %}
             {% for vendor in event.vendor_set.all %}
@@ -51,7 +61,7 @@
             {% endif %}
         </div>
     </div>
-    
+</div>
     <script>
     
         const dateEl = document.querySelector('#id_event_date');

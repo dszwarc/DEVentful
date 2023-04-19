@@ -11,7 +11,7 @@
   allowfullscreen
   referrerpolicy="no-referrer-when-downgrade"
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDaYfi9oyToekXnn6qxxwh23YJKToCqB5Q
-    &q=yardley+pa">
+    &q={{query}}">
 </iframe>
 
 <div class="row">
@@ -23,6 +23,7 @@
                 <p>Location: {{ event.location }}</p>
                 <p>Type: {{ event.get_event_type_display }}</p>
                 <p>Description: {{ event.description }}</p>
+                <p>Total Cost: {{ total_cost }}</p>
             </div>
             <div class="card-action">
                 <a href="{% url 'event_update' event.id %}">Edit</a>
@@ -51,7 +52,7 @@
             {% endif %}
         </div>
     </div>
-    
+
     <script>
     
         const dateEl = document.querySelector('#id_event_date');
@@ -66,8 +67,3 @@
     
     
 {% endblock %}
-
-
-
-
-    

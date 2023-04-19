@@ -16,7 +16,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
 def signup(request):
     error_message = ''
     if request.method == 'POST':
@@ -83,6 +82,7 @@ def event_index(request):
 
 class EventDetail(LoginRequiredMixin, DetailView):
     model = Event
+    
 
 
 class EventDelete(LoginRequiredMixin, DeleteView):
@@ -111,10 +111,13 @@ class VendorDetail(DetailView):
     model = Vendor
     # extra_context = {'events': Event.objects.filter({'vendors': pk})}
 
-# def vendor_detail(request, pk):
-#     vendor_id = pk
-#     vendor = Vendor.objects.get(id=vendor_id)
-#     vendor_nonevents = Event.objects.exclude(id__in=vendor.events.all)
+
+def vendor_detail(request, pk):
+    vendor_id = pk
+    vendor = Vendor.objects.get(id=vendor_id)
+    events_vendor_doesnt_have = Event.objects.exclude(id__in=vendor.events.all().values_list('id')).filter(user=request.user)
+    print(events_vendor_doesnt_have)
+    return render(request, 'main_app/vendor_detail.html', {'vendor': vendor, 'events':events_vendor_doesnt_have})
 
 
 class VendorDelete(LoginRequiredMixin, DeleteView):
@@ -127,5 +130,8 @@ class VendorUpdate(LoginRequiredMixin, UpdateView):
     fields = ['vendor_name', 'description',
               'cost', 'poc', 'email', 'phone']
 
-# def assoc_vendor(request):
-#     pass
+def assoc_vendor(request, vendor_id):
+    print(request.POST)
+    event_id = request.POST['event_id']
+    Vendor.objects.get(id=vendor_id).events.add(event_id)
+    return redirect('vendor_detail', pk = vendor_id)

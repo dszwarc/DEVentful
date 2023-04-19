@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from .models import Vendor, Event
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -7,8 +6,10 @@ from django.http import HttpResponse
 import uuid
 import boto3
 import os
-from .models import Event, Vendor, Photo
+from .models import Review, Event, Vendor, Photo
 from botocore.exceptions import ClientError
+from .forms import ReviewForm
+
 
 
 from django.contrib.auth import login
@@ -125,7 +126,21 @@ def vendor_detail(request, pk):
     vendor = Vendor.objects.get(id=vendor_id)
     events_vendor_doesnt_have = Event.objects.exclude(id__in=vendor.events.all().values_list('id')).filter(user=request.user)
     print(events_vendor_doesnt_have)
-    return render(request, 'main_app/vendor_detail.html', {'vendor': vendor, 'events':events_vendor_doesnt_have})
+    review_form = ReviewForm()
+    
+    return render(request, 'main_app/vendor_detail.html', {'vendor': vendor, 'events':events_vendor_doesnt_have, 'review_form':review_form})
+    
+    
+    # return render(request, )
+
+
+# def vendor_detail(request, pk):
+#     vendor_id = pk
+#     vendor = Vendor.objects.get(id=vendor_id)
+#     events_vendor_doesnt_have = Event.objects.exclude(id__in=vendor.events.all().values_list('id')).filter(user=request.user)
+#     review_form = ReviewForm()
+#     context = {'vendor': vendor, 'events': events_vendor_doesnt_have, 'review_form': review_form}
+#     return render(request, 'main_app/vendor_detail.html', context)
 
 
 class VendorDelete(LoginRequiredMixin, DeleteView):
@@ -143,3 +158,23 @@ def assoc_vendor(request, vendor_id):
     event_id = request.POST['event_id']
     Vendor.objects.get(id=vendor_id).events.add(event_id)
     return redirect('vendor_detail', pk = vendor_id)
+
+
+def add_review(request, vendor_id):
+    form = ReviewForm(request.POST)
+
+    if form.is_valid():
+        new_review = form.save(commit=False)
+        new_review.vendor_id = vendor_id
+        new_review.user_id = request.user.id
+        new_review.save()
+    return redirect('vendor_detail', pk=vendor_id)
+
+class ReviewDelete(DeleteView):
+    model = Review
+    # success_url='/vendors'
+    def post(self, request, vendor_id, pk):
+        Review.objects.filter(id=pk).delete()
+        return redirect('vendor_detail', pk=vendor_id)
+
+        

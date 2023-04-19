@@ -72,7 +72,14 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for vendor_id: {self.vendor_id} @{self.url}"
+    
 
+EXPERIENCES = (
+    ('E', 'Excellent'),
+    ('A', 'Average'),
+    ('T', 'Terrible'),
+
+)
 
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -82,9 +89,14 @@ class Review(models.Model):
     rating = models.PositiveIntegerField(default=1, validators=[MaxValueValidator(5)])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    experience = models.CharField(max_length=1, choices=EXPERIENCES, default=EXPERIENCES[1][0])
 
     def __str__(self):
-        return f"{self.title} - {self.user.username}"
+        return f"{self.title} - {self.get_experience_display()} - written by {self.user.username}"
+    
+    
+    class Meta:
+        ordering = ['-created_at']
 
     def get_absolute_url(self):
         return reverse('vendor_detail', kwargs={'pk': self.vendor.pk})

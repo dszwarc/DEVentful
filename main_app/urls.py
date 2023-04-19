@@ -18,5 +18,5 @@ urlpatterns = [
     path('vendors/<int:vendor_id>/assoc', views.assoc_vendor, name='assoc_vendor'),
     path('accounts/signup/', views.signup, name='signup'),
     path('vendors/<int:vendor_id>/add_photo/', views.add_photo, name='add_photo'),
+    path('vendors/<int:vendor_id>/delete_photo/<int:photo_id>/', views.delete_photo, name='delete_photo'),
 ]
-

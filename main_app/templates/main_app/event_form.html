@@ -4,22 +4,24 @@
 {% block content %}
 
 {% if object %}
-	<h2>Edit <span class="teal-text">{{object.event_name}}</span></h2>
+<div class="form" >
+	<h2 class="center-align">Edit <span class="teal-text">{{object.event_name}}</span></h2>
 {% else %}
-	<h3 style="text-align: center;  float: left; width: 60%; background-color: black; color: antiquewhite; 
- position: absolute;
+	<h3 style="text-align: center;   width: 40%; background-color: black; color: antiquewhite; border-radius: 20%; 
+align-self:baseline; 
   top: 30%;
-  ">Add an Event</h3>
+  " class="center-align">Add an Event</h3>
+  
 {% endif %}
 
-<form action="" method="POST">
+<form action="" method="POST"  style="align-self: center; margin-top: 70px; justify-content:center; align-items: center; float: left;">
 	{% csrf_token %}
-	<table>
+	<table style="display: contents; justify-self: unset;  ">
 		{{ form.as_table}}
 	</table>
 	<button type="submit" class="btn">Submit</button>
 </form>
-	
+</div>
 <script>
 	const eventdateEl = document.getElementById('id_event_date');
 	M.Datepicker.init(eventdateEl, {

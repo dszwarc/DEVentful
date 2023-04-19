@@ -1,19 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2 style="text-align: center; justify-content: center; ">Events</h2>
+<div class="container" style="background-image: url('https://i.imgur.com/qgdc7Jq.jpg'); background-size: cover; background-position: cover; height: 100vh; width: 1000px;">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-12 col-md-6">
+      
+  
+
+<h2 class="text-center mb-4" style="text-align: center; margin-bottom: 40px;">Events</h2>
 
 
 {% for event in event_list %}
-  <a href="{% url 'event_detail' event.id %}">
-    <div class="card" style="width: 400px; display:flow-root;">
-        <div class="card-content" style="flex-wrap: wrap; margin: border-radius: 5px;">
-            <span class="card-title">{{ event.event_name }}</span>
-            <p>Event: {{ event.event_name }}</p>
+
+  <a href="{% url 'event_detail' event.id %}" >
+    
+    <div class="card mb-3" style="width: 100%; background-color: slategray; width:400px;">
+        <div class="card-content" style="color: black;">
+            <span class="card-title text-white" style="color:antiquewhite;">{{ event.event_name }}</span>
+            <p class="card-text text-white">Event: {{ event.event_name }}</p>
         </div>
     </div>
+  
   </a>
+
 {% endfor %}
     
-
+</div>
+</div>
+</div>
 {% endblock %}

@@ -3,28 +3,29 @@
 
 
 {% block content %}
-    <section class="hero">
+    <section class="hero" >
         
-        <div class="container">
+        <div class="container" style="background-color: antiquewhite; ">
             <div class="row">
-                <div class="col-md-6 d-flex align-items-center">
-                    <div class="hero-content">
+                <div class="col-md-6 d-flex align-items-center ">
+                    <div class="hero-content" >
                         <h1 class="text">Plan it. Live it. Love it.</h1>
                        
                         
                         
                         <div class="scroll-container " style="align-items: center; ">
                             <div class="scroll-content">
-                                <img style="width: 90%; justify-content: center; align-items: center; display: flex; margin: auto;" src="https://i.imgur.com/i21WphQ.jpg"/>
+                                <img style="width: 95%; justify-content: center; align-items: center; display: flex; margin: auto;" src="https://i.imgur.com/i21WphQ.jpg"/>
                                 
                             </div>
                           </div>
-                         <a href="{% url 'events_index' %}" class="btn" style="color:black; background-color: white; display: block; margin: 0 auto;">Get Started</a>
+                         
                     </div>
                 </div>
                 
             </div>
         </div>
-        <img class="responsive-img" url="https://i.imgur.com/5pVa76S.jpg"/>
+        <a href="{% url 'events_index' %}" class="btn" style="color:#ffffff; background-color: #000000; display: block; margin-top: 0 auto;  border-radius: 4px; padding: 12px 24px; text-align: center; font-size: 16px; font-weight: bold; text-decoration: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); transition: background-color 0.3s ease-in-out; width: 500px; height: 50px;">Get Started</a>
+       
     </section>
 {% endblock content %}

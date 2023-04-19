@@ -14,17 +14,6 @@ CATEGORIES = (
     ('T', 'Transportation'),
 )
 
-
-class Photo(models.Model):
-	# url of the image on aws
-    url = models.CharField(max_length=200)
-    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"Photo for vendor_id: {self.vendor_id} @{self.url}"
-
-
-
 TYPES = (
     ('we', 'Wedding'),
     ('bi', 'Birthday'),
@@ -32,8 +21,6 @@ TYPES = (
     ('br','Bridal Shower'),
     ('ba','Baby Shower'),
     )
-
-
 
 class Event(models.Model):
     event_name = models.CharField(max_length=255)
@@ -56,7 +43,6 @@ class Event(models.Model):
     
     def get_absolute_url(self):
         return reverse('events_index')
-    
 
 class Vendor(models.Model):
     vendor_name = models.CharField(max_length=200)
@@ -74,4 +60,10 @@ class Vendor(models.Model):
     def get_absolute_url(self):
         return reverse('vendors_index')
 
+class Photo(models.Model):
+	# url of the image on aws
+    url = models.CharField(max_length=200)
+    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"Photo for vendor_id: {self.vendor_id} @{self.url}"

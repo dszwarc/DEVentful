@@ -44,9 +44,14 @@
                     <span class="card-title">{{ vendor.vendor_name }}</span>
                     <p>Category: {{ vendor.get_category_display }}</p>
                     <p>Description: {{ vendor.description }}</p>
-                </div>
+                </div></a>
+                <form action="{% url 'disassoc_vendor' vendor.id event.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" class="btn" value="Remove Vendor">
+                </form>
             </div>
-        </a>
+        
+        
         {% endfor %}
         {% else %}
         <h5>No Vendors :(</h5>

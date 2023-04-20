@@ -157,11 +157,13 @@ class VendorUpdate(LoginRequiredMixin, UpdateView):
               'cost', 'poc', 'email', 'phone']
 
 def assoc_vendor(request, vendor_id):
-    print(request.POST)
     event_id = request.POST['event_id']
     Vendor.objects.get(id=vendor_id).events.add(event_id)
     return redirect('vendor_detail', pk = vendor_id)
 
+def disassoc_vendor(request, event_id, vendor_id):
+    Vendor.objects.get(id=vendor_id).events.remove(event_id)
+    return redirect('event_detail', pk=event_id)
 
 def add_review(request, vendor_id):
     form = ReviewForm(request.POST)

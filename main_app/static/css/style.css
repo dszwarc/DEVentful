@@ -53,29 +53,17 @@ header img {
   margin-right: 20px;
 }
 
-nav{
-height: 150px;
-}
 
 
-.card-container {
-height: 300px; 
-overflow: auto; 
-}
+
+
 .card-container {
 height: 300px;
 overflow: auto;
 animation: scroll 10s linear infinite;
 }
 
-@keyframes scroll {
-0% {
-    transform: translateY(0);
-}
-100% {
-    transform: translateY(-100%); 
-}
-}
+
 
 
 .container {

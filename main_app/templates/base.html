@@ -8,11 +8,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>DEVentful</title>
-	<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css' %}">
+	
 	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 
 <body >
@@ -22,7 +22,6 @@
 		<nav class="black">
 			<div>
 				<ul class="left">
-					<li><a href="{% url 'about' %}">About us</a></li>
 					<!-- user is automatically injected by django in every single
 					template -->
 					{% if user.is_authenticated %}
@@ -37,6 +36,7 @@
 					<li><a href="{% url 'signup' %}">Sign up</a></li>
 					<li><a href="{% url 'login' %}">Log In</a></li>
 				  	{% endif %}	
+					<li><a href="{% url 'about' %}">About us</a></li>
 				</ul>
 			</div>
 		</nav>

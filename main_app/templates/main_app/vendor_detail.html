@@ -15,10 +15,9 @@
           <p><span class="grey-text">Point of Contact:</span><br>{{ vendor.poc }}</p><br>
           <p><span class="grey-text">Email:</span><br>{{ vendor.email }}</p><br>
           <p><span class="grey-text">Phone:</span><br>{{ vendor.phone }}</p><br>
-          
         </div>
-        
       </div>
+      
       <div class="card-action">
         <a href="{% url 'vendor_update' vendor.id %}">Edit</a>
         <a href="{% url 'vendor_delete' vendor.id %}">Delete</a>

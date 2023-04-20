@@ -105,11 +105,33 @@
   </ul>
 </div>
 
+
 <div align="center">
-  <h2 style="font-size: 2.2rem; margin-top: 1.5rem; margin-bottom: 1rem;">Future Enhancement</h2>
+  <h2 style="font-size: 2.2rem; margin-top: 1.5rem; margin-bottom: 1rem;">Future Enhancements</h2>
 </div>
-<div>
-  <ul style="font-size: 1.2rem; line-height: 1.6rem; list-style-type: disc; margin: 0; padding: 0;">
-    <li style="margin-bottom: 1rem;"><strong>Pinterest Event Inspiration:</strong> We plan to integrate Pinterest into our application, providing users with a wealth of event ideas and inspiration. Users will be able to explore creative concepts for their events and gather valuable insights to enhance their event planning experience by accessing a dedicated Pinterest link.</li>
-  </ul>
-</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; margin-top: 1.5rem;">
+    <div style="flex-basis: 30%; max-width: 30%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center">
+      <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Budget</h3>
+      <p style="margin: 0; font-size: 1.2rem; line-height: 1.5rem; text-align:center;">Set and track your event budget meticulously, and receive timely alerts when you reach certain spending thresholds.</p>
+    </div>
+    <div style="flex-basis: 30%; max-width: 30%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center">
+      <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Cost Per Person</h3>
+      <p style="margin: 0; font-size: 1.2rem; line-height: 1.5rem; text-align:center;">Calculate the cost per person for your event, and adjust your plans accordingly to fit your budget.</p>
+    </div>
+    <div style="flex-basis: 30%; max-width: 30%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center">
+      <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Request a Quote</h3>
+      <p style="margin: 0; font-size: 1.2rem; line-height: 1.5rem; text-align:center;">Request a quote from vendors and receive personalized proposals based on your event needs.</p>
+    </div>
+    <div style="flex-basis: 30%; max-width: 30%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center">
+      <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Event Album</h3>
+      <p style="margin: 0; font-size: 1.2rem; line-height: 1.5rem; text-align:center;">Share event memories with an album feature, adding photos and videos to showcase your day.</p>
+    </div>
+    <div style="flex-basis: 30%; max-width: 30%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center">
+      <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Invite Guests</h3>
+      <p style="margin: 0; font-size: 1.2rem; line-height: 1.5rem; text-align:center;">Invite guests to your event and track RSVPs with an integrated guest book feature.</p>
+    </div>
+    <div style="flex-basis: 30%; max-width: 30%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center">
+      <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Pinterest Inspiration</h3>
+      <p style="margin: 0; font-size: 1.2rem; line-height: 1.5rem; text-align:center;">Integrate Pinterest for creative ideas, enhancing your event planning experience.</p>
+    </div>
+  

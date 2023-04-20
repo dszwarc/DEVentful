@@ -115,3 +115,72 @@ h3{
   justify-content: center;
   justify-items: center;
 }
+
+.all-of-vendor{
+  flex-direction: row;
+  width: 100%;
+}
+
+.top-of-vendor{
+  padding-top: 50px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#vendor-info{
+  width:100%;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+#card-content{
+  display:flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: space-evenly;
+  width:100%;
+}
+
+.vendor-blurb{
+  padding:5px;
+}
+
+#add-photo-div{
+  width:45%;
+  text-align: center;
+}
+
+#choose-file{
+  margin: auto 0; 
+}
+
+#upload-photo-btn{
+  margin: 0 auto;
+}
+
+#assoc_vendor{
+  width: 45%;
+  text-align: center;
+}
+
+#photo_and_vendor{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 25px 0 25px 0;
+}
+
+#add-review{
+  width:50%;
+  margin: 0 auto;
+}
+
+#no-review-title{
+  text-align:center;
+  padding-bottom: 15px;
+}

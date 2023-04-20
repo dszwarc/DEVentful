@@ -2,21 +2,25 @@
 
 
 {% block content %}
-<div class="container" style="margin: auto; width: 80%; padding: 20px; background-color: slategray; border-radius: 5px; color: black;">
+<div class="row" >
+    <div class="col s12">
 {% if object %}
 	<h2>Edit <span class="teal-text" style="color: black;">{{object.vendor_name}}</span></h2>
 {% else %}
-	<h2  style="text-align: center;   
-	  " class="center-align">Add a Vendor</h2>
+
+<div style="background-color: #333333; padding: 20px; width:600px;border-radius: 50%; margin-top: 20px;">
+<h2 style="text-align: center; color: white; ">Add a Vendor</h2>
+</div>
 {% endif %}
 
-<form action="" method="POST">
+<form action="" method="POST" style="text-align: center; margin-top: 70px;">
 	{% csrf_token %}
-	<table style="width:100%; margin-bottom: 60px; color: white;">
+	<table style="margin: 0 auto; color: #333; width: 80%; max-width: 600px; font-size: larger;">
 		{{ form.as_table}}
 	</table>
-	<button type="submit" class="waves-effect waves-light btn" style="display: block; margin: auto; background-color: aliceblue; color:black; border: none;width: 180px; height: 50px;">Submit</button>
-</form>
+	<div style="display: flex; justify-content: center;">
+	<button type="submit" class="waves-effect waves-light btn" style="display: block; margin: auto; background-color: black; color:antiquewhite; border: none;width: 200px; height: 50px;">Submit</button>
+</form></div>
 </div>
 <script>
 	const eventdateEl = document.getElementById('id_event_date');
@@ -35,5 +39,14 @@
     M.Timepicker.init(eventstart, twelveHour=false)
     M.Timepicker.init(eventend, twelveHour=false)
 </script>
-
+</div>
+</div>
 {% endblock content %}
+
+
+
+
+
+
+
+

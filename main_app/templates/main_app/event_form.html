@@ -2,26 +2,31 @@
 
 
 {% block content %}
-
+<div class="row" >
+  <div class="col s12">
 {% if object %}
 
 	<h2 class="center-align">Edit <span class="teal-text">{{object.event_name}}</span></h2>
-{% else %}
 
-	<h3 style="text-align: center;   width: 40%; background-color: black; color: antiquewhite; border-radius: 20%; 
-align-self:baseline; top: 30%;  margin-top: -150px; position:absolute;
-  " class="center-align">Add an Event</h3>
-  
+{% else %}
+<div style="background-color: #333333; padding: 20px; width:600px;border-radius: 50%; margin-top: 20px;">
+  <h2 style="text-align: center; color: white; ">Add an Event</h2>
+  </div>
+
+   
 {% endif %}
 
-<form action="" method="POST"  style="align-self: center; margin-top: 70px; justify-content:center; align-items: center; ">
+<form action="" method="POST"  style="align-self: center; text-align: center; margin-top: 70px;"  >
 	{% csrf_token %}
-	<table style="display: contents; justify-self: unset; align-items: center;  ">
+	<table style="margin: 0 auto; color: #333; width: 80%; max-width: 600px; font-size: larger;"  >
 		{{ form.as_table}}
 	</table>
   
-	<button type="submit" class="btn" style="background-color: slategray; color: white; border: none; padding: 10px 20px;
-  border-radius: 5px; font-size: 16px; width: 180px; height: 50px; text-align: center; margin:0 auto;">Submit</button>
+	<div style="display: flex; justify-content: center;">
+    <button type="submit" class="btn" style="background-color: black; color: antiquewhite; border: none; padding: 20px 40px; 
+      border-radius: 5px; font-size: 16px; height: 50px; text-align: center;padding: 10px 15px; width: 200px;">Submit</button>
+  </div>
+  
 </form>
 </div>
 <script>
@@ -41,5 +46,6 @@ align-self:baseline; top: 30%;  margin-top: -150px; position:absolute;
     M.Timepicker.init(eventstart, twelveHour=false)
     M.Timepicker.init(eventend, twelveHour=false)
 </script>
-
+</div>
+</div>
 {% endblock content %}

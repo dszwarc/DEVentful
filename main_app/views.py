@@ -43,6 +43,18 @@ def about(request):
 BUCKET = os.environ['AWS_BUCKET']
 S3_BASE_URL = os.environ['AWS_URL']
 
+def vendor_detail(request, pk):
+    vendor_id = pk
+    vendor = Vendor.objects.get(id=vendor_id)
+    if request.user.is_anonymous:
+        review_form = ReviewForm()
+        return render(request, 'main_app/vendor_detail.html', {'vendor': vendor, 'events': [], 'review_form':review_form})
+    else:
+        print(request.user)
+        events_vendor_doesnt_have = Event.objects.exclude(id__in=vendor.events.all().values_list('id')).filter(user=request.user)
+        review_form = ReviewForm()
+        return render(request, 'main_app/vendor_detail.html', {'vendor': vendor, 'events':events_vendor_doesnt_have, 'review_form':review_form})
+        
 
 @login_required
 def add_photo(request, vendor_id):
@@ -78,7 +90,6 @@ class EventList(LoginRequiredMixin, ListView):
     model = Event
 
 
-@login_required
 def event_index(request):
     events = Event.objects.filter(user=request.user)  # Corrected queryset
     return render(request, 'main_app/event_list.html', {'event_list': events})
@@ -122,29 +133,6 @@ class VendorList(ListView):
 class VendorDetail(DetailView):
     model = Vendor
     # extra_context = {'events': Event.objects.filter({'vendors': pk})}
-
-
-def vendor_detail(request, pk):
-    vendor_id = pk
-    vendor = Vendor.objects.get(id=vendor_id)
-    events_vendor_doesnt_have = Event.objects.exclude(id__in=vendor.events.all().values_list('id')).filter(user=request.user)
-    print(events_vendor_doesnt_have)
-    review_form = ReviewForm()
-    
-    return render(request, 'main_app/vendor_detail.html', {'vendor': vendor, 'events':events_vendor_doesnt_have, 'review_form':review_form})
-    
-    
-    # return render(request, )
-
-
-# def vendor_detail(request, pk):
-#     vendor_id = pk
-#     vendor = Vendor.objects.get(id=vendor_id)
-#     events_vendor_doesnt_have = Event.objects.exclude(id__in=vendor.events.all().values_list('id')).filter(user=request.user)
-#     review_form = ReviewForm()
-#     context = {'vendor': vendor, 'events': events_vendor_doesnt_have, 'review_form': review_form}
-#     return render(request, 'main_app/vendor_detail.html', context)
-
 
 class VendorDelete(LoginRequiredMixin, DeleteView):
     model = Vendor

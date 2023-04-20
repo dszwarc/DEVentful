@@ -3,18 +3,18 @@
 <div class="all-of-vendor">
   <div class="container top-of-vendor">  
     <div class="card" id="vendor-info">
-      <span class="card-title">{{ vendor.vendor_name }}</span>
+      <span id="vendor-title" class="card-title">{{ vendor.vendor_name }}</span>
       <div class="card-content" id="card-content">
         
         <div class="vendor-blurb" id="vendor-left">
-          <p><span class="teal-text">Category:</span><br>{{vendor.get_category_display}}</p><br>
-          <p><span class="teal-text">Cost:</span><br>${{ vendor.cost }}</p><br>
-          <p><span class="teal-text">Description:</span><br>{{ vendor.description }}</p>
+          <p><span class="grey-text">Category:</span><br>{{vendor.get_category_display}}</p><br>
+          <p><span class="grey-text">Cost:</span><br>${{ vendor.cost }}</p><br>
+          <p><span class="grey-text">Description:</span><br>{{ vendor.description }}</p>
         </div>
         <div class="vendor-blurb" id="vendor-right">
-          <p><span class="teal-text">Point of Contact:</span><br>{{ vendor.poc }}</p><br>
-          <p><span class="teal-text">Email:</span><br>{{ vendor.email }}</p><br>
-          <p><span class="teal-text">Phone:</span><br>{{ vendor.phone }}</p><br>
+          <p><span class="grey-text">Point of Contact:</span><br>{{ vendor.poc }}</p><br>
+          <p><span class="grey-text">Email:</span><br>{{ vendor.email }}</p><br>
+          <p><span class="grey-text">Phone:</span><br>{{ vendor.phone }}</p><br>
           
         </div>
         
@@ -28,10 +28,10 @@
     {% for photo in vendor.photo_set.all %}
     <img class="responsive-img card-panel" src="{{photo.url}}">
     <form action="{% url 'delete_photo' vendor.id photo.id %}">
-      <input type="submit" class="btn" value="x">
+      <input type="submit" class="waves-effect waves-light btn black" value="x">
     </form>
     {% empty %}
-      <div class="card-panel teal-text center-align">
+      <div class="card-panel grey-text center-align">
         No Photos Uploaded
       </div>
     {% endfor %}
@@ -41,7 +41,7 @@
         <form action="{% url 'add_photo' vendor.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
         {% csrf_token %}
         <div class = "file-field input-field">
-          <div class = "btn">
+          <div class = "waves-effect waves-light btn black">
             <span>Browse</span>
             <input name="photo-file" type = "file" />
           </div>
@@ -51,7 +51,7 @@
             </div>
           </div>
         <br><br>
-        <input id="upload-photo-btn" type="submit" class="btn" value="Upload Photo">
+        <input id="upload-photo-btn" type="submit" class="waves-effect waves-light btn black" value="Upload Photo">
         </form>
       </div>
 
@@ -59,7 +59,7 @@
         
         <form class="card-panel" action="{% url 'assoc_vendor' vendor.id %}" method="POST">
         {% csrf_token %}
-        <span class="card-title">Add <span class="teal-text">{{ vendor.vendor_name}}</span> to your Event!</span>
+        <span class="card-title">Add <span class="grey-text">{{ vendor.vendor_name}}</span> to your Event!</span>
         <br><br><label for="event_id">Events:</label><br>
         <select name="event_id" id="vendor_assoc">
         {% if events.count %}
@@ -68,7 +68,7 @@
           {% endfor %}
         {% endif %}
         </select>
-        <button type="submit" class="btn">Add Vendor to Event</button>
+        <button type="submit" class="waves-effect waves-light btn black">Add Vendor to Event</button>
         </form>
       </div>
     </div>
@@ -84,6 +84,7 @@
           <th>Experience</th>
           <th>Content</th>
           <th>Rating</th>
+          <th>Left By</th>
           <th></th>
         </tr>
       </thead>
@@ -94,7 +95,14 @@
             <td>{{ review.get_experience_display }}</td>
             <td>{{ review.content}}</td>
             <td>{{ review.rating }}</td>
-            <td><a href="{% url 'review_delete' vendor.id review.id %}">Delete</a></td>
+            <td>{{review.user}}</td>
+            <td>
+              {% if request.user.is_anonymous == False %}
+                {% if user == request.user %}
+                <a href="{% url 'review_delete' vendor.id review.id %}">Delete</a>
+                {% endif %}
+              {% endif %}
+            </td>
           </tr>
         {% endfor %}
       </tbody>
@@ -102,7 +110,7 @@
       </div>
     </div>
     {% else %}
-    <h5 id="no-review-title"><span class="teal-text">{{vendor.vendor_name}}</span> has no reviews yet. <br> Leave one below!</span></h5>
+    <h5 id="no-review-title"><span class="grey-text">{{vendor.vendor_name}}</span> has no reviews yet. <br> Leave one below!</span></h5>
     {% endif %}
       
   
@@ -112,7 +120,7 @@
     <form action="{% url 'add_review' vendor.id %}" method="POST">
     {% csrf_token %}
     {{ review_form.as_p }}
-    <button type="submit" class="btn">Submit Review</button>
+    <button type="submit" class="waves-effect waves-light btn black">Submit Review</button>
     </form>
   </div>
 </div>

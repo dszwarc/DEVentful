@@ -104,9 +104,10 @@ def event_detail(request, pk):
     q_location = '+'.join(event.location.split())
     vendors = event.vendor_set.all()
     cost = 0
+    key = os.environ['GOOGLE_API_KEY']
     for vendor in vendors:
         cost += vendor.cost
-    return render(request, 'main_app/event_detail.html', {'event': event, 'query':q_location, 'total_cost':cost})
+    return render(request, 'main_app/event_detail.html', {'event': event, 'query':q_location, 'total_cost':cost, 'key':key})
 
 class EventDelete(LoginRequiredMixin, DeleteView):
     model = Event

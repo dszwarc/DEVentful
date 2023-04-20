@@ -6,13 +6,12 @@
 {% if object %}
 	<h2>Edit <span class="teal-text" style="color: black;">{{object.vendor_name}}</span></h2>
 {% else %}
-	<h2  style="text-align: center;   
-	  " class="center-align">Add a Vendor</h2>
+	<h2  style="text-align: center; color:antiquewhite;  ">Add a Vendor</h2>
 {% endif %}
 
 <form action="" method="POST">
 	{% csrf_token %}
-	<table style="width:100%; margin-bottom: 60px; color: white;">
+	<table style="width:100%; margin-bottom: 60px;">
 		{{ form.as_table}}
 	</table>
 	<button type="submit" class="waves-effect waves-light btn" style="display: block; margin: auto; background-color: aliceblue; color:black; border: none;width: 180px; height: 50px;">Submit</button>

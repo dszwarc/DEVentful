@@ -1,63 +1,127 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h2>Vendor Details</h2>
-
-<div class="row">
-  <div class="col s6 col-offset-3">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">{{ vendor.vendor_name }}</span>
-        <p>Description: {{ vendor.description }}</p>
-        <p>Category: {% for value, display_name in vendor.category.field.choices %}
-                      {% if vendor.category == value %}
-                        {{ display_name }}
-                      {% endif %}
-                     {% endfor %}
-        </p>
-        <p>Cost: {{ vendor.cost }}</p>
-        <p>Point of Contact: {{ vendor.poc }}</p>
-        <p>Email: {{ vendor.email }}</p>
-        <p>Phone: {{ vendor.phone }}</p>
+<div class="all-of-vendor">
+  <div class="container top-of-vendor">  
+    <div class="card" id="vendor-info">
+      <span class="card-title">{{ vendor.vendor_name }}</span>
+      <div class="card-content" id="card-content">
+        
+        <div class="vendor-blurb" id="vendor-left">
+          <p><span class="teal-text">Category:</span><br>{{vendor.get_category_display}}</p><br>
+          <p><span class="teal-text">Cost:</span><br>${{ vendor.cost }}</p><br>
+          <p><span class="teal-text">Description:</span><br>{{ vendor.description }}</p>
+        </div>
+        <div class="vendor-blurb" id="vendor-right">
+          <p><span class="teal-text">Point of Contact:</span><br>{{ vendor.poc }}</p><br>
+          <p><span class="teal-text">Email:</span><br>{{ vendor.email }}</p><br>
+          <p><span class="teal-text">Phone:</span><br>{{ vendor.phone }}</p><br>
+          
+        </div>
+        
       </div>
       <div class="card-action">
         <a href="{% url 'vendor_update' vendor.id %}">Edit</a>
         <a href="{% url 'vendor_delete' vendor.id %}">Delete</a>
       </div>
     </div>
+  
     {% for photo in vendor.photo_set.all %}
-		<img class="responsive-img card-panel" src="{{photo.url}}">
-		{% empty %}
-		<div class="card-panel teal-text center-align">No Photos Uploaded</div>
-		{% endfor %}
+    <img class="responsive-img card-panel" src="{{photo.url}}">
+    <form action="{% url 'delete_photo' vendor.id photo.id %}">
+      <input type="submit" class="btn" value="x">
+    </form>
+    {% empty %}
+      <div class="card-panel teal-text center-align">
+        No Photos Uploaded
+      </div>
+    {% endfor %}
+    </div>
+    <div id="photo_and_vendor">
+      <div id="add-photo-div">
+        <form action="{% url 'add_photo' vendor.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+        {% csrf_token %}
+        <div class = "file-field input-field">
+          <div class = "btn">
+            <span>Browse</span>
+            <input name="photo-file" type = "file" />
+          </div>
+            <div class = "file-path-wrapper">
+            <input class = "file-path validate" type = "text"
+              placeholder = "Upload file" />
+            </div>
+          </div>
+        <br><br>
+        <input id="upload-photo-btn" type="submit" class="btn" value="Upload Photo">
+        </form>
+      </div>
 
-		<form action="{% url 'add_photo' vendor.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-			{% csrf_token %}
-			<input type="file" name="photo-file">
-			<br><br>
-			<input type="submit" class="btn" value="Upload Photo">
-		</form>
-  </div>
-</div>
+      <div id="assoc_vendor">
+        
+        <form class="card-panel" action="{% url 'assoc_vendor' vendor.id %}" method="POST">
+        {% csrf_token %}
+        <span class="card-title">Add <span class="teal-text">{{ vendor.vendor_name}}</span> to your Event!</span>
+        <br><br><label for="event_id">Events:</label><br>
+        <select name="event_id" id="vendor_assoc">
+        {% if events.count %}
+          {% for event in events %}
+          <option value="{{event.id}}">{{event.event_name}}</option>
+          {% endfor %}
+        {% endif %}
+        </select>
+        <button type="submit" class="btn">Add Vendor to Event</button>
+        </form>
+      </div>
+    </div>
 
-<div>
-  <form action="{% url 'assoc_vendor' vendor.id %}" method="POST">
-    {% csrf_token %}
-    <label for="event_id">Events:</label>
-    <select name="event_id" id="vendor_assoc">
-      {% if events.count %}
-        {% for event in events %}
-        <option value="{{event.id}}">{{event.event_name}}</option>
+    
+    {% if vendor.review_set.count %}
+    <div class="row">
+      <div class="col s12">
+      <table class="striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Experience</th>
+          <th>Content</th>
+          <th>Rating</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for review in vendor.review_set.all %}
+          <tr>
+            <td>{{ review.title }}</td>
+            <td>{{ review.get_experience_display }}</td>
+            <td>{{ review.content}}</td>
+            <td>{{ review.rating }}</td>
+            <td><a href="{% url 'review_delete' vendor.id review.id %}">Delete</a></td>
+          </tr>
         {% endfor %}
-      {% endif %}
-    </select>
-    <button type="submit" class="btn">Add Vendor to Event</button>
-  </form>
+      </tbody>
+      </table>
+      </div>
+    </div>
+    {% else %}
+    <h5 id="no-review-title"><span class="teal-text">{{vendor.vendor_name}}</span> has no reviews yet. <br> Leave one below!</span></h5>
+    {% endif %}
+      
+  
+
+  <div id="add-review" class="card-panel">
+    <span class="card-title"><h5>Add a new review</h5></span>
+    <form action="{% url 'add_review' vendor.id %}" method="POST">
+    {% csrf_token %}
+    {{ review_form.as_p }}
+    <button type="submit" class="btn">Submit Review</button>
+    </form>
+  </div>
 </div>
 
 <script>
   const selectEl = document.getElementById('vendor_assoc')
   M.FormSelect.init(selectEl)
+  const reviewEl = document.getElementById('id_experience')
+  M.FormSelect.init(reviewEl)
 </script>
 
 {% endblock %}

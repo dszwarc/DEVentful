@@ -4,22 +4,24 @@
 {% block content %}
 
 {% if object %}
-<div class="form" >
+
 	<h2 class="center-align">Edit <span class="teal-text">{{object.event_name}}</span></h2>
 {% else %}
+
 	<h3 style="text-align: center;   width: 40%; background-color: black; color: antiquewhite; border-radius: 20%; 
-align-self:baseline; 
-  top: 30%;
+align-self:baseline; top: 30%;  margin-top: -150px; position:absolute;
   " class="center-align">Add an Event</h3>
   
 {% endif %}
 
-<form action="" method="POST"  style="align-self: center; margin-top: 70px; justify-content:center; align-items: center; float: left;">
+<form action="" method="POST"  style="align-self: center; margin-top: 70px; justify-content:center; align-items: center; ">
 	{% csrf_token %}
-	<table style="display: contents; justify-self: unset;  ">
+	<table style="display: contents; justify-self: unset; align-items: center;  ">
 		{{ form.as_table}}
 	</table>
-	<button type="submit" class="btn">Submit</button>
+  
+	<button type="submit" class="btn" style="background-color: slategray; color: white; border: none; padding: 10px 20px;
+  border-radius: 5px; font-size: 16px; width: 180px; height: 50px; text-align: center; margin:0 auto;">Submit</button>
 </form>
 </div>
 <script>

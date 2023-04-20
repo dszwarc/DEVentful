@@ -1,23 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h2>Event Details</h2>
-
-<iframe
-  width="600"
-  height="450"
-  style="border:0"
-  loading="lazy"
-  allowfullscreen
-  referrerpolicy="no-referrer-when-downgrade"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDaYfi9oyToekXnn6qxxwh23YJKToCqB5Q
-    &q={{query}}">
-</iframe>
-
 <div class="row">
+    
     <div class="col s6">
-        <div class="card">
-            <div class="card-content">
+        <h2>{{ event.event_name }}'s Details</h2>
+
+        <div class="card" style="width: 100%; background-color: antiquewhite;">
+            <div class="card-content" style="width: 200px; height: 510px; font-size: large; ">
                 <span class="card-title">{{ event.event_name }}</span>
                 <p>Date: {{ event.event_date }}</p>
                 <p>Location: {{ event.location }}</p>
@@ -26,44 +15,62 @@
                 <p>Total Cost: {{ total_cost }}</p>
             </div>
             <div class="card-action">
-                <a href="{% url 'event_update' event.id %}">Edit</a>
-                <a href="{% url 'event_delete' event.id %}">Delete</a>
+                <a class="waves-effect waves-light btn black" href="{% url 'event_update' event.id %}">Edit</a>
+                <a  class=" waves-effect waves-light btn black" href="{% url 'event_delete' event.id %}">Delete</a>
             </div>
         </div>
     </div>
 
-    <hr>
-    <div class="row">
-        <div class="col s6">
-            <h3>{{ event.event_name }}'s Vendors</h3>
-            {% if event.vendor_set.all.count %}
-            {% for vendor in event.vendor_set.all %}
-            <a href="{% url 'vendor_detail' vendor.id %}"><div class="card">
-                <div class="card-content">
+    <div class="col s14 m6">
+        <iframe
+            width="600"
+            height="700px"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDaYfi9oyToekXnn6qxxwh23YJKToCqB5Q
+                &q={{query}}">
+        </iframe>
+    </div>
+    
+    <div class="" style="  width: 600px;">
+        <h3 style="font-size:40px;">{{ event.event_name }}'s Vendors</h3>
+        {% if event.vendor_set.all.count %}
+        {% for vendor in event.vendor_set.all %}
+        <a href="{% url 'vendor_detail' vendor.id %}">
+            <div class="card" style="display: contents;">
+                
+                <div class="card-content" style="color: black; font-size: medium;background-color: antiquewhite;">
                     <span class="card-title">{{ vendor.vendor_name }}</span>
                     <p>Category: {{ vendor.get_category_display }}</p>
                     <p>Description: {{ vendor.description }}</p>
-                </div>
-            </a>
+                </div></a>
+                <form action="{% url 'disassoc_vendor' vendor.id event.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" class="btn" value="Remove Vendor">
+                </form>
             </div>
-            {% endfor %}
-            {% else %}
-            <h5>No Vendors :(</h5>
-            {% endif %}
-        </div>
+        
+        
+        {% endfor %}
+        {% else %}
+        <h5>No Vendors :(</h5>
+        {% endif %}
     </div>
+</div>
 
-    <script>
-    
-        const dateEl = document.querySelector('#id_event_date');
-        M.Datepicker.init(dateEl, {
-            format: 'yyyy-mm-dd', // this how django formats the date in the model
-            defaultDate: new Date(),
-            setDefaultDate: true,
-            autoClose: true
-        })
-    
-    </script>
+<script>
+
+    const dateEl = document.querySelector('#id_event_date');
+    M.Datepicker.init(dateEl, {
+        format: 'yyyy-mm-dd', // this how django formats the date in the model
+        defaultDate: new Date(),
+        setDefaultDate: true,
+        autoClose: true
+    })
+
+</script>
     
     
 {% endblock %}

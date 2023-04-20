@@ -1,48 +1,49 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2 style="text-align: center; margin-top:50px;">Vendors</h2>
-<div class="container" style="text-align: center; margin-top: 50px; ">
-<table  class="table table-bordered table-striped" style="border: 1px solid black;">
-    <thead style="padding: 10px;">
+<h2 class="text-center mb-4" style="text-align: center; margin-top:120px; justify-content: center; margin: 0 auto; margin-bottom: 40px;">Vendors</h2>
+<div class="d-flex justify-content-center" style="margin-top: 90px; justify-content: center; position:absolute;   align-items: center; padding:0%;display: -ms-flexbox; ">
+<table  class="table table-bordered table-striped mx-auto" style="border: 1px solid black;padding: 20px;
+ font-size: large;width: 20%; margin: 0 auto; margin-inline-start: auto;"> 
+    <thead style="padding: 10px; ">
         <tr>
-            <th>Vendor Name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Cost</th>
-            <th>Point of Contact</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Actions</th>
+            <th style="padding: 20px; font-size: x-large;">Vendor Name</th>
+            <th style="padding: 20px; font-size: x-large;">Description</th>
+            <th style="padding: 20px; font-size: x-large;">Category</th>
+            <th style="padding: 20px; font-size: x-large;">Cost</th>
+            <th style="padding: 20px; font-size: x-large;">Point of Contact</th>
+            <th style="padding: 20px; font-size: x-large;">Email</th>
+            <th style="padding: 20px; font-size: x-large;">Phone</th>
+            <th style="padding: 20px; font-size: x-large;">Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for vendor in vendor_list %}
         <tr>
-            <td>{{ vendor.vendor_name }}</td>
-            <td>{{ vendor.description }}</td>
-            <td>{% for value, display_name in vendor.category.field.choices %}
+            <td style="padding: 20px; font-size: large;">{{ vendor.vendor_name }}</td>
+            <td style="padding: 20px; font-size: large;">{{ vendor.description }}</td>
+            <td style="padding: 20px; font-size: large;">{% for value, display_name in vendor.category.field.choices %}
                     {% if vendor.category == value %}
                       {{ display_name }}
                     {% endif %}
                 {% endfor %}
             </td>
-            <td>{{ vendor.cost }}</td>
-            <td>{{ vendor.poc }}</td>
-            <td>{{ vendor.email }}</td>
-            <td>{{ vendor.phone }}</td>
+            <td style="padding: 20px; font-size: large;">{{ vendor.cost }}</td>
+            <td style="padding: 20px; font-size: large;">{{ vendor.poc }}</td>
+            <td style="padding: 20px; font-size: large;">{{ vendor.email }}</td>
+            <td style="padding: 20px; font-size: large;">{{ vendor.phone }}</td>
             <td>
             
-                <a  class="btn btn-primary btn-sm" href="{% url 'vendor_detail' vendor.id %}">View</a>
-                <a  class="btn btn-secondary btn-sm" href="{% url 'vendor_update' vendor.id %}">Edit</a>
-                <a  class="btn btn-danger btn-sm" href="{% url 'vendor_delete' vendor.id %}">Delete</a>
+                <a  class="btn btn-primary btn-sm" href="{% url 'vendor_detail' vendor.id %}" style="background-color: white; color: black; width: 120px;">View</a>
+                <a  class="btn btn-secondary btn-sm" href="{% url 'vendor_update' vendor.id %}" style="background-color: white; color: black; width: 120px;">Edit</a>
+                <a  class="btn btn-danger btn-sm" href="{% url 'vendor_delete' vendor.id %}" style="background-color: white; color: black; width: 120px;">Delete</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-<div class="d-flex justify-content-center">
-<a href="{% url 'vendor_create' %}">Add a new vendor</a>
+<div style="display: flex; justify-content: center;" >
+<a href="{% url 'vendor_create' %}" class="btn" style="color: #ffffff; background-color: #708090; border-radius: 4px; font-size: 14px; width: 400px;  ">Add a new vendor</a>
 </div>
 </div>
 

@@ -1,4 +1,8 @@
 <h1 align="center" style="font-size: 48px;">DEVentful</h1>
+<div align="center">
+  <img src="https://i.imgur.com/8olm4un.png" alt="DEVentful Logo" style="max-width: 100%; height: auto; margin-bottom: 1.5rem;">
+</div>
+
 
 <div align="center">
   <p style="font-size: 1.2rem; line-height: 1.5rem; margin-top: 1.5rem;">
@@ -30,7 +34,15 @@
     <li style="margin-bottom: 1rem;"><strong>Vendor Management:</strong> Users can create, view, update, and delete vendor profiles, including vendor name, description, category, cost, point of contact, email, and phone number.</li>
     <li style="margin-bottom: 1rem;"><strong>Vendor Categories:</strong> Vendors are organized into predefined categories such as Catering, Entertainment, Decor, and Transportation.</li>
     <li style="margin-bottom: 1rem;"><strong>Event Types:</strong> Users can choose from predefined event types like weddings, birthdays, graduations, bridal showers, and baby showers when creating an event.</li>
+    <li style="margin-bottom: 1rem;"><strong>Vendor Reviews and Feedback:</strong> Users can leave ratings and feedback for vendors they have worked with by visiting the vendor detail page and clicking the "Add Review" link. This feature helps others make informed decisions when choosing vendors for their events.</li>
+    <li style="margin-bottom: 1rem;"><strong>Integrated Venue Location and Directions:</strong> The event detail page is improved by integrating Google Maps API, allowing users to easily view the event venue's location and access directions directly from the application.</li>
+    <li style="margin-bottom: 1rem;"><strong>Budget Limit Notifications:</strong> A feature that notifies users when their event budget reaches its limit is implemented, empowering them to effectively manage their expenses and make informed decisions regarding additional vendor services.</li>
   </ul>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; margin-top: 1.5rem;">
+    <div style="flex-basis: 30%; max-width: 30%;"><img src="https://i.imgur.com/IcxLz3J.png" alt="User Authentication"></div>
+    <div style="flex-basis: 30%; max-width: 30%;"><img src="https://i.imgur.com/gGIPv9V.png" alt="Vendor Management"></div>
+    <div style="flex-basis: 30%; max-width: 30%;"><img src="https://i.imgur.com/8OfwFXk.png" alt="Vendor Categories"></div>
+  </div>
 </div>
 
 <div align="center">
@@ -98,9 +110,6 @@
 </div>
 <div>
   <ul style="font-size: 1.2rem; line-height: 1.6rem; list-style-type: disc; margin: 0; padding: 0;">
-    <li style="margin-bottom: 1rem;"><strong>Vendor Reviews and Feedback:</strong> We plan to allow users to leave ratings and feedback for vendors they have worked with by visiting the vendor detail page and clicking the "Add Review" link. This enhancement will help others make informed decisions when choosing vendors for their events.</li>
-    <li style="margin-bottom: 1rem;"><strong>Integrated Venue Location and Directions:</strong> We plan to improve the event detail page by integrating Google Maps API, allowing users to easily view the event venue's location and access directions directly from the application.</li>
-    <li style="margin-bottom: 1rem;"><strong>Budget Limit Notifications:</strong> We aim to implement a feature that notifies users when their event budget reaches its limit, empowering them to effectively manage their expenses and make informed decisions regarding additional vendor services.</li>
     <li style="margin-bottom: 1rem;"><strong>Pinterest Event Inspiration:</strong> We plan to integrate Pinterest into our application, providing users with a wealth of event ideas and inspiration. Users will be able to explore creative concepts for their events and gather valuable insights to enhance their event planning experience by accessing a dedicated Pinterest link.</li>
   </ul>
 </div>

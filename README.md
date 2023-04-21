@@ -23,7 +23,7 @@
   <h2 style="font-size: 2rem; margin-top: 1.5rem;">Deployment Link</h2>
   <p style="font-size: 1.2rem; line-height: 1.5rem;">
     Check out the live deployment of DEVentful at:<br>
-    <a href="https://emilymerrow.github.io/DEVentful/" style="color: #4E73DF;">https://emilymerrow.github.io/DEVentful/</a>
+    <a href="https://deventful.fly.dev/" style="color: #4E73DF;">DEVentful Deployment Link</a>
   </p>
   <h2 style="font-size: 2rem; margin-top: 1.5rem;">Innovative Functionality</h2>
 </div>

@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,100;1,100&family=Bruno+Ace&family=Chakra+Petch:wght@300&family=Climate+Crisis&family=Courgette&family=Oswald:wght@200;700&family=Poiret+One&display=swap');
+
 body {
     display: flex;
     min-height: 100vh;
@@ -80,7 +82,7 @@ header img {
 }
 
 
-h3{
+h3 {
   text-align: center;
   justify-content: center;
   justify-items: center;
@@ -162,4 +164,50 @@ h3{
 #vendor-title{
   font-size:45px;
   padding-top: 15px;
+}
+
+#top-events-detail{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+#map-container{
+  border: solid grey 1px !important;
+  padding: 15px !important;
+}
+
+#vendor-on-event{
+  text-align: center;
+}
+
+#events-detail-all{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#vendor-area{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#event-detail-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#event-card-left, #event-card-right{
+  text-align: center;
+  width:50%;
+}
+.card-action{
+  text-align: center;
+  gap: 50px;
 }

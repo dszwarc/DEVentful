@@ -1,18 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<div id="events-detail-all">
+<div id="top-events-detail">
 <div class="card" >
       
-    <h2 class="center-align" style="font-size: 60px;text-align: center;">{{ event.event_name }}'s Details</h2>
+    <h2 class="center-align" style="font-family: 'Bruno Ace', cursive; margin-bottom: 0px !important; font-size: 60px;text-align: center;">{{ event.event_name }}'s Details</h2>
 
     
         <div class="card-stacked">
-            <div class="card-content">
-            <p><strong style="text-decoration: underline; font-size: large;">Date: </strong> {{ event.event_date }}</p>
-            <p><strong style="text-decoration: underline; font-size: large;">Location: </strong> {{ event.location }}</p>
-            <p><strong style="text-decoration: underline; font-size: large;">Type: </strong> {{ event.get_event_type_display }}</p>
-            <p><strong style="text-decoration: underline; font-size: large;">Description:</strong> {{ event.description }}</p>
-            <p><strong style="text-decoration: underline; font-size: large;">Total Cost: </strong>{{ total_cost }}</p>
+            <div id="event-detail-card" class="card-content">
+                <div id="event-card-left">
+                    <p><strong style="color: grey; font-size: large;">Date: </strong> <br>{{ event.event_date }}</p><br>
+                    <p><strong style="color: grey; font-size: large;">Location: </strong> <br>{{ event.location }}</p><br>
+                    <p><strong style="color: grey; font-size: large;">Type: </strong> <br>{{ event.get_event_type_display }}</p><br>
+                </div>
+                <div id="event-card-right">
+                    <p><strong style="color: grey; font-size: large;">Total Cost: </strong> <br>{{ total_cost }}</p><br>
+                    <p><strong style="color: grey; font-size: large;">Description:</strong> <br>{{ event.description }}</p><br>
+                </div>
+            
+
         </div>
         <div class="card-action">
             <a class="waves-effect waves-light btn black" href="{% url 'event_update' event.id %}">Edit</a>
@@ -20,17 +27,12 @@
         </div>
     </div>
 </div>
-
-<div class="row map row" >
-    <div class="col s12 m6">
-        <div class="card">
-            <div class="card-content" >
-                
+         
                 <div class="map-container">
                     <iframe
-                    width="250%"
-                    height="800px"
-                    style="border:0"
+                    width="490px"
+                    height="480px"
+        
                     loading="lazy"
                     allowfullscreen
                     referrerpolicy="no-referrer-when-downgrade"
@@ -38,24 +40,20 @@
                 </iframe>
 
             </div>
-        </div>
-        </div>
-        </div>
-    
-            <div class="row vendors-row">
-                
-                <h2 class="center-align event-name">{{ event.event_name }}'s Vendors</h2>
+</div>
+        <h2 class="center-align event-name" style="font-family: 'Bruno Ace'">{{ event.event_name }}'s Vendors</h2>
+            <div id="vendor-area">
                 {% if event.vendor_set.all.count %}
                 {% for vendor in event.vendor_set.all %}
-                <div class="col s12 m6 l4"
+                <div id="vendor-on-event" class="col s12 m6 l4"
                 <a href="{% url 'vendor_detail' vendor.id %}">
                     
                         
                     
                     <div class="card" style="display:flexbox;position: relative; width: 400px; background-color: antiquewhite;" >
                             <span class="card-title">{{ vendor.vendor_name }}</span>
-                            <p > <strong style="text-decoration: underline; font-size: large;"> Category: </strong> {{ vendor.get_category_display }} </p>
-                            <p> <strong style="text-decoration: underline; font-size: large;">Description: </strong>{{ vendor.description }}</p>
+                            <p > <strong style="text-decoration: underline; font-size: large;"> Category: <br></strong> {{ vendor.get_category_display }} </p>
+                            <p> <strong style="text-decoration: underline; font-size: large;">Description: <br></strong>{{ vendor.description }}</p>
                         </div></a>
                         <form action="{% url 'disassoc_vendor' vendor.id event.id %}" method="POST">
                             {% csrf_token %}
@@ -70,6 +68,7 @@
             </div>
             </div>
             </div>
+        </div>
             <script>
             
                 const dateEl = document.querySelector('#id_event_date');
